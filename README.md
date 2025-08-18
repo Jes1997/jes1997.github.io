@@ -39,7 +39,7 @@ _Tecnologías: Laravel, FullCalendar._
 ---
 
 ## 📬 Contacto
-- 💼 [LinkedIn](www.linkedin.com/in/jesús-garcía-castillo-4359981b4)  
+- 💼 [LinkedIn](https://www.linkedin.com/in/jesús-garcía-castillo-4359981b4)  
 - 💻 [GitHub](https://github.com/Jes1997)  
 - 📧 jesus19997@gmail.com
 
