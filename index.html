@@ -1,54 +1,328 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Jesús García</title>
-  <!-- Tailwind desde CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 text-gray-800 font-sans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Jesús García</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 
-  <!-- Header -->
-  <header class="text-center p-6 bg-blue-600 text-white shadow">
-    <h1 class="text-3xl font-bold">Jesús García</h1>
-    <p class="text-lg">Desarrollador Web Fullstack</p>
-  </header>
+    <style>
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 70px; /* Altura del header sticky */
+      }
 
-  <!-- Sección de proyectos -->
-  <main class="p-6">
-    <h2 class="text-2xl font-semibold mb-4 text-center">🚀 Mis Proyectos</h2>
+      /* Fondo partículas */
+      #tsparticles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+      }
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Proyecto 1 -->
-      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-        <h3 class="font-bold text-xl mb-2">Proyecto 1</h3>
-        <p class="mb-2">Descripción breve del proyecto.</p>
-        <a href="#" class="text-blue-600 hover:underline">Ver más</a>
+      /* Animación de gradiente en movimiento */
+      @keyframes gradient-x {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+      .animate-gradient-x {
+        background-size: 300% 300%;
+        animation: gradient-x 10s ease infinite;
+      }
+
+      /* Glow */
+      .neon-text {
+        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff,
+          0 0 40px #00ffff;
+      }
+      .neon-sub {
+        text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;
+      }
+      .neon-card {
+        box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff, inset 0 0 10px #ff00ff;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+      }
+      .neon-card:hover {
+        box-shadow: 0 0 20px #ff6ec7, 0 0 30px #9b5de5, inset 0 0 15px #ff6ec7;
+        transform: scale(1.02);
+      }
+
+      /* Animaciones de entrada */
+      .animate-fadeIn {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .animate-fadeIn.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Gradiente en títulos */
+      .gradient-text {
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      /* Menú neon */
+      .menu-neon {
+        text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;
+        transition: text-shadow 0.3s ease, transform 0.3s ease, color 0.3s ease;
+      }
+      .menu-neon:hover {
+        text-shadow: 0 0 8px #ff6ec7, 0 0 15px #9b5de5;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-950 text-white font-mono relative">
+    <!-- Fondo partículas -->
+    <div id="tsparticles"></div>
+
+    <!-- Header -->
+    <header
+      class="bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-pink-500"
+    >
+      <nav
+        class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <h1 class="text-xl font-bold text-cyan-300 neon-sub">
+          JesusGarcia.dev
+        </h1>
+        <ul class="flex gap-6">
+          <li>
+            <a
+              href="#sobre-mi"
+              class="menu-neon relative inline-block text-white transition-transform duration-300 transform hover:scale-105 hover:text-pink-400"
+            >
+              Sobre mí
+            </a>
+          </li>
+          <li>
+            <a
+              href="#proyectos"
+              class="menu-neon relative inline-block text-white transition-transform duration-300 transform hover:scale-105 hover:text-pink-400"
+            >
+              Proyectos
+            </a>
+          </li>
+          <li>
+            <a
+              href="#contacto"
+              class="menu-neon relative inline-block text-white transition-transform duration-300 transform hover:scale-105 hover:text-pink-400"
+            >
+              Contacto
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section
+      class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-500 animate-gradient-x relative z-10"
+    >
+      <h2
+        class="text-6xl font-bold text-white drop-shadow-lg mb-3 leading-relaxed"
+      >
+        Hola, soy
+        <span class="text-cyan-400 drop-shadow-[0_0_10px_#22d3ee]">
+          Jesús García
+        </span>
+      </h2>
+      <p class="text-lg md:text-xl max-w-2xl text-gray-200 font-semibold">
+        Desarrollador web junior con experiencia en Laravel, PHP, MySQL y
+        aprendiendo Python.<br />
+        Apasionado por el desarrollo limpio y soluciones creativas.
+      </p>
+      <a
+        href="#proyectos"
+        class="mt-6 px-6 py-3 bg-pink-500 text-white font-bold rounded-full neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all"
+      >
+        🚀 Ver mis proyectos
+      </a>
+    </section>
+
+    <!-- Sobre mí -->
+    <section
+      id="sobre-mi"
+      class="animate-fadeIn max-w-5xl mx-auto px-4 py-16 relative z-10"
+    >
+      <h3 class="text-3xl font-bold mb-6 text-cyan-300 neon-sub">Sobre mí</h3>
+      <p class="text-lg leading-relaxed text-gray-300">
+        Soy un desarrollador web junior con experiencia en backend con Laravel y
+        MySQL, además de integración de librerías como FullCalendar y
+        DataTables. Actualmente estoy aprendiendo Python para ampliar mis
+        habilidades y crear proyectos más versátiles.
+      </p>
+    </section>
+
+    <!-- Proyectos -->
+    <section
+      id="proyectos"
+      class="animate-fadeIn bg-gray-900 py-16 relative z-10"
+    >
+      <div class="max-w-6xl mx-auto px-4">
+        <h3
+          class="text-3xl font-bold mb-10 text-center text-pink-400 neon-text"
+        >
+          Proyectos
+        </h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Proyecto 1 -->
+          <div class="bg-gray-800 rounded-2xl overflow-hidden neon-card">
+            <img
+              src="https://placehold.co/600x200"
+              alt="Proyecto 1"
+              class="w-full"
+            />
+            <div class="p-4">
+              <h4 class="text-xl font-bold text-cyan-300">Proyecto 1</h4>
+              <p class="text-gray-400 mt-2">
+                Sistema de Citas Autogestionable en Página Web
+              </p>
+              <a href="#" class="text-pink-400 hover:underline mt-3 block"
+                >Ver más</a
+              >
+            </div>
+          </div>
+
+          <!-- Proyecto 2 -->
+          <div
+            class="relative bg-gray-800 rounded-2xl overflow-hidden neon-card"
+          >
+            <img
+              src="https://placehold.co/600x200"
+              alt="Proyecto 2"
+              class="w-full"
+            />
+            <div class="p-4">
+              <h4 class="text-xl font-bold text-cyan-300">Proyecto 2</h4>
+              <p class="text-gray-400 mt-2">
+                Generación de facturas con Laravel y SweetAlert.
+              </p>
+              <a href="#" class="text-pink-400 hover:underline mt-3 block"
+                >Ver más</a
+              >
+            </div>
+            <div
+              class="absolute inset-0 bg-black/70 flex items-center justify-center"
+            >
+              <span class="text-white text-lg font-bold"
+                >🚧 Próximamente 🚧</span
+              >
+            </div>
+          </div>
+
+          <!-- Proyecto 3 -->
+          <div
+            class="relative bg-gray-800 rounded-2xl overflow-hidden neon-card"
+          >
+            <img
+              src="https://placehold.co/600x200"
+              alt="Proyecto 3"
+              class="w-full"
+            />
+            <div class="p-4">
+              <h4 class="text-xl font-bold text-cyan-300">Proyecto 3</h4>
+              <p class="text-gray-400 mt-2">
+                Script en Python para automatización de tareas.
+              </p>
+              <a href="#" class="text-pink-400 hover:underline mt-3 block"
+                >Ver más</a
+              >
+            </div>
+            <div
+              class="absolute inset-0 bg-black/70 flex items-center justify-center"
+            >
+              <span class="text-white text-lg font-bold"
+                >🚧 Próximamente 🚧</span
+              >
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <!-- Proyecto 2 -->
-      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-        <h3 class="font-bold text-xl mb-2">Proyecto 2</h3>
-        <p class="mb-2">Descripción breve del proyecto.</p>
-        <a href="#" class="text-blue-600 hover:underline">Ver más</a>
-      </div>
+    <!-- Contacto -->
+    <section
+      id="contacto"
+      class="animate-fadeIn max-w-5xl mx-auto px-4 py-16 text-center relative z-10"
+    >
+      <h3 class="text-3xl font-bold mb-6 text-cyan-300 neon-sub">Contacto</h3>
+      <p class="text-lg text-gray-300">
+        Si te interesa trabajar conmigo o tienes alguna consulta, no dudes en
+        escribirme.
+      </p>
+      <a
+        href="mailto:jesus19997@gmail.com"
+        class="mt-6 inline-block px-6 py-3 bg-pink-500 text-white rounded-full font-bold neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all"
+      >
+        📩 Envíame un correo
+      </a>
+    </section>
 
-      <!-- Proyecto 3 -->
-      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition">
-        <h3 class="font-bold text-xl mb-2">Proyecto 3</h3>
-        <p class="mb-2">Descripción breve del proyecto.</p>
-        <a href="#" class="text-blue-600 hover:underline">Ver más</a>
-      </div>
-    </div>
-  </main>
+    <!-- Footer -->
+    <footer
+      class="bg-gray-950 text-gray-400 py-6 text-center border-t border-pink-500 relative z-10"
+    >
+      <p>&copy; 2025 Jesús García. Todos los derechos reservados.</p>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="text-center p-4 bg-gray-800 text-white mt-6">
-    © 2025 Jesús García · 
-    <a href="https://github.com/tuusuario" class="underline">GitHub</a> · 
-    <a href="https://www.linkedin.com/in/tuusuario" class="underline">LinkedIn</a>
-  </footer>
+    <!-- Script partículas y scroll animations -->
+    <script>
+      // Partículas
+      tsParticles.load("tsparticles", {
+        background: { color: "transparent" },
+        particles: {
+          number: { value: 70 },
+          move: { enable: true, speed: 2 },
+          size: { value: 3 },
+          color: { value: ["#ff6ec7", "#9b5de5", "#00bcd4"] },
+          links: {
+            enable: true,
+            distance: 120,
+            color: "#ff6ec7",
+            opacity: 0.3,
+            width: 1,
+          },
+        },
+        interactivity: {
+          events: {
+            onHover: { enable: true, mode: "grab" },
+            onClick: { enable: true, mode: "push" },
+          },
+          modes: {
+            grab: { distance: 150, links: { opacity: 0.5 } },
+            repulse: { distance: 100 },
+            bubble: { distance: 100, size: 6, duration: 2, opacity: 0.8 },
+            push: { quantity: 4 },
+          },
+        },
+      });
 
-</body>
+      // Animaciones de scroll
+      const sections = document.querySelectorAll(".animate-fadeIn");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      sections.forEach((section) => observer.observe(section));
+    </script>
+  </body>
 </html>
