@@ -10,8 +10,18 @@
     <style>
       html {
         scroll-behavior: smooth;
-        scroll-padding-top: 70px; /* Altura del header sticky */
+        scroll-padding-top: 70px;
       }
+
+      /* Cursor neon/futurista */
+      body {
+        cursor: url("https://cur.cursors-4u.net/cursors/neon/neon-7/neon-7.cur"),
+          auto;
+      }
+      /* Otras opciones de cursor neon comentadas:
+       'https://cur.cursors-4u.net/cursors/neon/neon-5/neon-5.cur'
+       'https://cur.cursors-4u.net/cursors/neon/neon-9/neon-9.cur'
+    */
 
       /* Fondo partículas */
       #tsparticles {
@@ -23,7 +33,6 @@
         z-index: -10;
       }
 
-      /* Animación de gradiente en movimiento */
       @keyframes gradient-x {
         0%,
         100% {
@@ -38,7 +47,105 @@
         animation: gradient-x 10s ease infinite;
       }
 
-      /* Glow */
+      /* Menú móvil overlay */
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(30, 30, 30, 0.95);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(-100%) scale(0.95);
+        opacity: 0;
+        transition: transform 0.5s cubic-bezier(0.25, 1.25, 0.5, 1),
+          opacity 0.3s ease;
+        z-index: 50;
+      }
+      .mobile-menu.open {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+
+      /* Rebote al cerrar */
+      @keyframes bounceClose {
+        0% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+        30% {
+          transform: translateY(-20px) scale(1.02);
+          opacity: 1;
+        }
+        60% {
+          transform: translateY(10px) scale(0.98);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100%) scale(0.95);
+          opacity: 0;
+        }
+      }
+      .mobile-menu.bouncing-close {
+        animation: bounceClose 0.5s forwards;
+      }
+
+      /* Enlaces animados */
+      .mobile-menu ul li a {
+        font-size: 1.5rem;
+        color: white;
+        transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      .mobile-menu.open ul li a {
+        animation: slideFadeIn 0.4s forwards;
+      }
+      .mobile-menu.open ul li:nth-child(1) a {
+        animation-delay: 0.1s;
+      }
+      .mobile-menu.open ul li:nth-child(2) a {
+        animation-delay: 0.2s;
+      }
+      .mobile-menu.open ul li:nth-child(3) a {
+        animation-delay: 0.3s;
+      }
+
+      @keyframes slideFadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Hover neon en enlaces del menú móvil */
+      .mobile-menu ul li a:hover {
+        color: #ff6ec7;
+        text-shadow: 0 0 8px #ff6ec7, 0 0 12px #9b5de5;
+        transform: translateY(-2px);
+      }
+
+      /* Botón cerrar */
+      .mobile-menu #close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+        transition: color 0.2s ease;
+      }
+      .mobile-menu #close-btn:hover {
+        color: #ff6ec7;
+      }
+
+      /* Glow y neon */
       .neon-text {
         text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff,
           0 0 40px #00ffff;
@@ -51,39 +158,16 @@
         transition: box-shadow 0.3s ease, transform 0.3s ease;
       }
       .neon-card:hover {
+        transform: scale(1.03) rotateX(3deg) rotateY(3deg);
         box-shadow: 0 0 20px #ff6ec7, 0 0 30px #9b5de5, inset 0 0 15px #ff6ec7;
-        transform: scale(1.02);
       }
 
-      /* Animaciones de entrada */
-      .animate-fadeIn {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
-      .animate-fadeIn.active {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Gradiente en títulos */
-      .gradient-text {
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-
-      /* Menú neon */
-      .menu-neon {
-        text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;
-        transition: text-shadow 0.3s ease, transform 0.3s ease, color 0.3s ease;
-      }
-      .menu-neon:hover {
-        text-shadow: 0 0 8px #ff6ec7, 0 0 15px #9b5de5;
+      footer {
+        border-top: 4px solid;
+        border-image: linear-gradient(90deg, #ff6ec7, #9b5de5, #22d3ee) 1;
       }
     </style>
   </head>
-
   <body class="bg-gray-950 text-white font-mono relative">
     <!-- Fondo partículas -->
     <div id="tsparticles"></div>
@@ -93,72 +177,95 @@
       class="bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-pink-500"
     >
       <nav
-        class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center"
+        class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center"
       >
-        <h1 class="text-xl font-bold text-cyan-300 neon-sub">
+        <h1 class="text-xl sm:text-2xl font-bold text-cyan-300 neon-sub">
           JesusGarcia.dev
         </h1>
-        <ul class="flex gap-6">
+        <button
+          id="menu-btn"
+          class="md:hidden flex items-center px-3 py-2 border rounded"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+        <ul class="hidden md:flex gap-6">
           <li>
-            <a
-              href="#sobre-mi"
-              class="menu-neon relative inline-block text-white transition-transform duration-300 transform hover:scale-105 hover:text-pink-400"
+            <a href="#sobre-mi" class="hover:text-pink-400 transition"
+              >Sobre mí</a
             >
-              Sobre mí
-            </a>
           </li>
           <li>
-            <a
-              href="#proyectos"
-              class="menu-neon relative inline-block text-white transition-transform duration-300 transform hover:scale-105 hover:text-pink-400"
+            <a href="#proyectos" class="hover:text-pink-400 transition"
+              >Proyectos</a
             >
-              Proyectos
-            </a>
           </li>
           <li>
-            <a
-              href="#contacto"
-              class="menu-neon relative inline-block text-white transition-transform duration-300 transform hover:scale-105 hover:text-pink-400"
+            <a href="#contacto" class="hover:text-pink-400 transition"
+              >Contacto</a
             >
-              Contacto
-            </a>
           </li>
         </ul>
       </nav>
     </header>
 
+    <!-- Menú móvil overlay -->
+    <div id="mobile-menu" class="mobile-menu hidden md:hidden">
+      <span id="close-btn">&times;</span>
+      <ul
+        class="flex flex-col items-center space-y-6 sm:space-y-8 px-6 sm:px-12"
+      >
+        <li><a href="#sobre-mi" class="text-2xl sm:text-3xl">Sobre mí</a></li>
+        <li><a href="#proyectos" class="text-2xl sm:text-3xl">Proyectos</a></li>
+        <li><a href="#contacto" class="text-2xl sm:text-3xl">Contacto</a></li>
+      </ul>
+    </div>
+
     <!-- Hero -->
     <section
-      class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-500 animate-gradient-x relative z-10"
+      class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-500 animate-gradient-x relative z-10 px-4 sm:px-6"
     >
       <h2
-        class="text-6xl font-bold text-white drop-shadow-lg mb-3 leading-relaxed"
+        class="text-4xl sm:text-6xl font-bold text-white drop-shadow-lg mb-3 leading-relaxed"
       >
         Hola, soy
-        <span class="text-cyan-400 drop-shadow-[0_0_10px_#22d3ee]">
-          Jesús García
-        </span>
+        <span
+          class="bg-gradient-to-r from-cyan-400 via-pink-500 to-purple-500 gradient-text drop-shadow-[0_0_10px_#22d3ee]"
+          >Jesús García</span
+        >
       </h2>
-      <p class="text-lg md:text-xl max-w-2xl text-gray-200 font-semibold">
+      <p class="text-base sm:text-lg max-w-2xl text-gray-200 font-semibold">
         Desarrollador web junior con experiencia en Laravel, PHP, MySQL y
         aprendiendo Python.<br />
         Apasionado por el desarrollo limpio y soluciones creativas.
       </p>
       <a
         href="#proyectos"
-        class="mt-6 px-6 py-3 bg-pink-500 text-white font-bold rounded-full neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all"
+        class="mt-4 sm:mt-6 px-6 py-3 bg-pink-500 text-white font-bold rounded-full neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all"
+        >🚀 Ver mis proyectos</a
       >
-        🚀 Ver mis proyectos
-      </a>
     </section>
 
-    <!-- Sobre mí -->
+    <!-- Secciones -->
     <section
       id="sobre-mi"
-      class="animate-fadeIn max-w-5xl mx-auto px-4 py-16 relative z-10"
+      class="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10"
     >
-      <h3 class="text-3xl font-bold mb-6 text-cyan-300 neon-sub">Sobre mí</h3>
-      <p class="text-lg leading-relaxed text-gray-300">
+      <h3 class="text-2xl sm:text-3xl font-bold mb-6 text-cyan-300 neon-sub">
+        Sobre mí
+      </h3>
+      <p class="text-base sm:text-lg leading-relaxed text-gray-300">
         Soy un desarrollador web junior con experiencia en backend con Laravel y
         MySQL, además de integración de librerías como FullCalendar y
         DataTables. Actualmente estoy aprendiendo Python para ampliar mis
@@ -166,19 +273,14 @@
       </p>
     </section>
 
-    <!-- Proyectos -->
-    <section
-      id="proyectos"
-      class="animate-fadeIn bg-gray-900 py-16 relative z-10"
-    >
-      <div class="max-w-6xl mx-auto px-4">
+    <section id="proyectos" class="bg-gray-900 py-12 sm:py-16 relative z-10">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <h3
-          class="text-3xl font-bold mb-10 text-center text-pink-400 neon-text"
+          class="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 text-center text-pink-400 neon-text"
         >
           Proyectos
         </h3>
-        <div class="grid md:grid-cols-3 gap-8">
-          <!-- Proyecto 1 -->
+        <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
           <div class="bg-gray-800 rounded-2xl overflow-hidden neon-card">
             <img
               src="https://placehold.co/600x200"
@@ -186,17 +288,19 @@
               class="w-full"
             />
             <div class="p-4">
-              <h4 class="text-xl font-bold text-cyan-300">Proyecto 1</h4>
-              <p class="text-gray-400 mt-2">
+              <h4 class="text-xl sm:text-xl font-bold text-cyan-300">
+                Proyecto 1
+              </h4>
+              <p class="text-gray-400 mt-2 text-sm sm:text-base">
                 Sistema de Citas Autogestionable en Página Web
               </p>
-              <a href="#" class="text-pink-400 hover:underline mt-3 block"
+              <a
+                href="#"
+                class="text-pink-400 hover:underline mt-3 block text-sm sm:text-base"
                 >Ver más</a
               >
             </div>
           </div>
-
-          <!-- Proyecto 2 -->
           <div
             class="relative bg-gray-800 rounded-2xl overflow-hidden neon-card"
           >
@@ -206,11 +310,15 @@
               class="w-full"
             />
             <div class="p-4">
-              <h4 class="text-xl font-bold text-cyan-300">Proyecto 2</h4>
-              <p class="text-gray-400 mt-2">
+              <h4 class="text-xl sm:text-xl font-bold text-cyan-300">
+                Proyecto 2
+              </h4>
+              <p class="text-gray-400 mt-2 text-sm sm:text-base">
                 Generación de facturas con Laravel y SweetAlert.
               </p>
-              <a href="#" class="text-pink-400 hover:underline mt-3 block"
+              <a
+                href="#"
+                class="text-pink-400 hover:underline mt-3 block text-sm sm:text-base"
                 >Ver más</a
               >
             </div>
@@ -222,8 +330,6 @@
               >
             </div>
           </div>
-
-          <!-- Proyecto 3 -->
           <div
             class="relative bg-gray-800 rounded-2xl overflow-hidden neon-card"
           >
@@ -233,11 +339,15 @@
               class="w-full"
             />
             <div class="p-4">
-              <h4 class="text-xl font-bold text-cyan-300">Proyecto 3</h4>
-              <p class="text-gray-400 mt-2">
+              <h4 class="text-xl sm:text-xl font-bold text-cyan-300">
+                Proyecto 3
+              </h4>
+              <p class="text-gray-400 mt-2 text-sm sm:text-base">
                 Script en Python para automatización de tareas.
               </p>
-              <a href="#" class="text-pink-400 hover:underline mt-3 block"
+              <a
+                href="#"
+                class="text-pink-400 hover:underline mt-3 block text-sm sm:text-base"
                 >Ver más</a
               >
             </div>
@@ -256,19 +366,20 @@
     <!-- Contacto -->
     <section
       id="contacto"
-      class="animate-fadeIn max-w-5xl mx-auto px-4 py-16 text-center relative z-10"
+      class="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 text-center relative z-10"
     >
-      <h3 class="text-3xl font-bold mb-6 text-cyan-300 neon-sub">Contacto</h3>
-      <p class="text-lg text-gray-300">
+      <h3 class="text-2xl sm:text-3xl font-bold mb-6 text-cyan-300 neon-sub">
+        Contacto
+      </h3>
+      <p class="text-base sm:text-lg text-gray-300">
         Si te interesa trabajar conmigo o tienes alguna consulta, no dudes en
         escribirme.
       </p>
       <a
         href="mailto:jesus19997@gmail.com"
-        class="mt-6 inline-block px-6 py-3 bg-pink-500 text-white rounded-full font-bold neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all"
+        class="mt-4 sm:mt-6 inline-block px-6 py-3 bg-pink-500 text-white rounded-full font-bold neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all"
+        >📩 Envíame un correo</a
       >
-        📩 Envíame un correo
-      </a>
     </section>
 
     <!-- Footer -->
@@ -278,7 +389,6 @@
       <p>&copy; 2025 Jesús García. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script partículas y scroll animations -->
     <script>
       // Partículas
       tsParticles.load("tsparticles", {
@@ -310,19 +420,30 @@
         },
       });
 
-      // Animaciones de scroll
-      const sections = document.querySelectorAll(".animate-fadeIn");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("active");
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
-      sections.forEach((section) => observer.observe(section));
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const closeBtn = document.getElementById("close-btn");
+      const mobileLinks = mobileMenu.querySelectorAll("a");
+
+      function openMenu() {
+        mobileMenu.classList.remove("hidden", "bouncing-close");
+        setTimeout(() => mobileMenu.classList.add("open"), 10);
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.remove("open");
+        mobileMenu.classList.add("bouncing-close");
+        setTimeout(() => {
+          mobileMenu.classList.add("hidden");
+          mobileMenu.classList.remove("bouncing-close");
+        }, 500);
+        document.body.style.overflow = "auto";
+      }
+
+      menuBtn.addEventListener("click", openMenu);
+      closeBtn.addEventListener("click", closeMenu);
+      mobileLinks.forEach((link) => link.addEventListener("click", closeMenu));
     </script>
   </body>
 </html>
