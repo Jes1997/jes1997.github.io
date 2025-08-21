@@ -15,21 +15,6 @@ Actualmente busco seguir aprendiendo y aportar valor en proyectos desafiantes.
 
 ---
 
-## 🚀 Proyectos Destacados
-🔹 **[Gestor de Entrenamientos con FullCalendar](#)**
-Aplicación para gestionar entrenamientos y clientes con calendario interactivo.  
-_Tecnologías: Laravel, FullCalendar, MySQL, jQuery._
-
-🔹 **[Sistema de Facturación](#)**
-Generación de facturas con selección de mes y año, exportación en PDF y confirmación con SweetAlert.  
-_Tecnologías: Laravel, jQuery, AJAX._
-
-🔹 **[Módulo de Cumpleaños de Clientes](#)**
-Funcionalidad para mostrar cumpleaños en calendario con alertas personalizadas.  
-_Tecnologías: Laravel, FullCalendar._
-
----
-
 ## 🛠️ Tecnologías y Herramientas
 - **Lenguajes:** PHP, JavaScript, SQL
 - **Frameworks:** Laravel, Bootstrap, TailwindCSS
