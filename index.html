@@ -4,24 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio - Jesús García</title>
+    <!-- Favicon clásico -->
+    <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
+
+    <!-- Favicons en diferentes tamaños -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+
+    <!-- Para iOS / Safari -->
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
+
+    <!-- Manifest opcional (si lo usas) -->
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-
     <style>
       html {
         scroll-behavior: smooth;
         scroll-padding-top: 70px;
       }
-
-      /* Cursor neon/futurista */
-      body {
-        cursor: url("https://cur.cursors-4u.net/cursors/neon/neon-7/neon-7.cur"),
-          auto;
-      }
-      /* Otras opciones de cursor neon comentadas:
-       'https://cur.cursors-4u.net/cursors/neon/neon-5/neon-5.cur'
-       'https://cur.cursors-4u.net/cursors/neon/neon-9/neon-9.cur'
-    */
 
       /* Fondo partículas */
       #tsparticles {
@@ -237,14 +249,16 @@
       class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-500 animate-gradient-x relative z-10 px-4 sm:px-6"
     >
       <h2
-        class="text-4xl sm:text-6xl font-bold text-white drop-shadow-lg mb-3 leading-relaxed"
+        class="text-4xl sm:text-6xl font-bold text-white mb-3 leading-relaxed"
       >
         Hola, soy
         <span
-          class="bg-gradient-to-r from-cyan-400 via-pink-500 to-purple-500 gradient-text drop-shadow-[0_0_10px_#22d3ee]"
-          >Jesús García</span
+          class="bg-gradient-to-r from-cyan-400 via-white-500 to-cyan-500 bg-clip-text text-transparent drop-shadow-[0_0_10px_#22d3ee]"
         >
+          Jesús García
+        </span>
       </h2>
+
       <p class="text-base sm:text-lg max-w-2xl text-gray-200 font-semibold">
         Desarrollador web junior con experiencia en Laravel, PHP, MySQL y
         aprendiendo Python.<br />
