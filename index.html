@@ -174,6 +174,21 @@
         box-shadow: 0 0 20px #ff6ec7, 0 0 30px #9b5de5, inset 0 0 15px #ff6ec7;
       }
 
+      @keyframes scrollMini {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      .animate-scrollMini {
+        animation: scrollMini 3s ease-in-out infinite;
+      }
+
       footer {
         border-top: 4px solid;
         border-image: linear-gradient(90deg, #ff6ec7, #9b5de5, #22d3ee) 1;
@@ -295,34 +310,47 @@
           Proyectos
         </h3>
         <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
-          <div class="bg-gray-800 rounded-2xl overflow-hidden neon-card">
-            <img
-              src="https://placehold.co/600x200"
-              alt="Proyecto 1"
-              class="w-full"
-            />
+          <!-- Proyecto Academia Deportiva -->
+          <div
+            class="bg-gray-800 rounded-2xl overflow-hidden neon-card transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
+          >
+            <div class="overflow-hidden h-48 rounded-t-2xl">
+              <img
+                src="assets/proyectos/magistrae-preview.png"
+                alt="Vista previa de la web de la academia"
+                onerror="if(!this.dataset.fallback){this.dataset.fallback='true'; his.src='assets/screenshots/magistrae-placeholder.png';}"
+                class="w-full h-full object-cover transform animate-scrollMini"
+              />
+            </div>
             <div class="p-4">
               <h4 class="text-xl sm:text-xl font-bold text-cyan-300">
-                Proyecto 1
+                Web para Academia Deportiva
               </h4>
               <p class="text-gray-400 mt-2 text-sm sm:text-base">
-                Sistema de Citas Autogestionable en Página Web
+                Desarrollo de un sitio web corporativo con gestión de
+                inscripciones y panel de administración autogestionable en
+                Laravel.
               </p>
               <a
-                href="#"
+                href="https://magistrae.es"
+                target="_blank"
                 class="text-pink-400 hover:underline mt-3 block text-sm sm:text-base"
-                >Ver más</a
               >
+                🌐 Ver sitio en vivo
+              </a>
             </div>
           </div>
+          <!-- Proyecto 2 -->
           <div
-            class="relative bg-gray-800 rounded-2xl overflow-hidden neon-card"
+            class="bg-gray-800 rounded-2xl overflow-hidden neon-card transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1 relative"
           >
-            <img
-              src="https://placehold.co/600x200"
-              alt="Proyecto 2"
-              class="w-full"
-            />
+            <div class="overflow-hidden h-48 rounded-t-2xl">
+              <img
+                src="https://placehold.co/600x200"
+                alt="Proyecto 2"
+                class="w-full h-full object-cover transform animate-scrollMini"
+              />
+            </div>
             <div class="p-4">
               <h4 class="text-xl sm:text-xl font-bold text-cyan-300">
                 Proyecto 2
@@ -344,14 +372,18 @@
               >
             </div>
           </div>
+
+          <!-- Proyecto 3 -->
           <div
-            class="relative bg-gray-800 rounded-2xl overflow-hidden neon-card"
+            class="bg-gray-800 rounded-2xl overflow-hidden neon-card transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1 relative"
           >
-            <img
-              src="https://placehold.co/600x200"
-              alt="Proyecto 3"
-              class="w-full"
-            />
+            <div class="overflow-hidden h-48 rounded-t-2xl">
+              <img
+                src="https://placehold.co/600x200"
+                alt="Proyecto 3"
+                class="w-full h-full object-cover transform animate-scrollMini"
+              />
+            </div>
             <div class="p-4">
               <h4 class="text-xl sm:text-xl font-bold text-cyan-300">
                 Proyecto 3
