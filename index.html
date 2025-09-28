@@ -4,10 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio - Jesús García</title>
-    <!-- Favicon clásico -->
-    <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
 
-    <!-- Favicons en diferentes tamaños -->
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Portafolio de Jesús García, desarrollador web junior con experiencia en Laravel, PHP, MySQL y Python. Proyectos web y scripts de automatización."
+    />
+    <meta
+      name="keywords"
+      content="desarrollador web, Laravel, PHP, MySQL, Python, portafolio, proyectos web"
+    />
+    <meta name="author" content="Jesús García" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
     <link
       rel="icon"
       type="image/png"
@@ -20,15 +30,13 @@
       sizes="16x16"
       href="assets/favicon/favicon-16x16.png"
     />
-
-    <!-- Para iOS / Safari -->
     <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
-
-    <!-- Manifest opcional (si lo usas) -->
     <link rel="manifest" href="assets/favicon/site.webmanifest" />
 
+    <!-- Tailwind & tsParticles -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
     <style>
       html {
         scroll-behavior: smooth;
@@ -261,7 +269,7 @@
 
     <!-- Hero -->
     <section
-      class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-500 animate-gradient-x relative z-10 px-4 sm:px-6"
+      class="h-screen flex flex-col justify-center items-center text-center bg-gray-900/30 relative z-10 px-4 sm:px-6"
     >
       <h2
         class="text-4xl sm:text-6xl font-bold text-white mb-3 leading-relaxed"
@@ -273,20 +281,19 @@
           Jesús García
         </span>
       </h2>
-
       <p class="text-base sm:text-lg max-w-2xl text-gray-200 font-semibold">
         Desarrollador web junior con experiencia en Laravel, PHP, MySQL y
-        aprendiendo Python.<br />
-        Apasionado por el desarrollo limpio y soluciones creativas.
+        Python.
       </p>
       <a
         href="#proyectos"
         class="mt-4 sm:mt-6 px-6 py-3 bg-pink-500 text-white font-bold rounded-full neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all"
-        >🚀 Ver mis proyectos</a
       >
+        🚀 Ver mis proyectos
+      </a>
     </section>
 
-    <!-- Secciones -->
+    <!-- Sobre mí -->
     <section
       id="sobre-mi"
       class="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10"
@@ -295,13 +302,13 @@
         Sobre mí
       </h3>
       <p class="text-base sm:text-lg leading-relaxed text-gray-300">
-        Soy un desarrollador web junior con experiencia en backend con Laravel y
-        MySQL, además de integración de librerías como FullCalendar y
-        DataTables. Actualmente estoy aprendiendo Python para ampliar mis
-        habilidades y crear proyectos más versátiles.
+        Desarrollador web junior con experiencia en backend con Laravel y MySQL,
+        integración de librerías como FullCalendar y DataTables, y aprendizaje
+        de Python para proyectos más versátiles.
       </p>
     </section>
 
+    <!-- Proyectos -->
     <section id="proyectos" class="bg-gray-900 py-12 sm:py-16 relative z-10">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <h3
@@ -310,83 +317,83 @@
           Proyectos
         </h3>
         <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
-          <!-- Proyecto Academia Deportiva -->
+          <!-- Proyecto Magistrae -->
           <div
             class="bg-gray-800 rounded-2xl overflow-hidden neon-card transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
           >
             <div class="overflow-hidden h-48 rounded-t-2xl">
               <img
-                src="assets/screenshots/magistrae-placeholder.png"
-                alt="Vista previa de la web de la academia"
-                onerror="if(!this.dataset.fallback){this.dataset.fallback='true'; his.src='assets/screenshots/magistrae-placeholder.png';}"
+                src="assets/screenshots/magistrae-placeholder.webp"
+                alt="Web corporativa de la Academia Magistrae"
+                loading="lazy"
                 class="w-full h-full object-cover transform animate-scrollMini"
               />
             </div>
             <div class="p-4">
               <h4 class="text-xl sm:text-xl font-bold text-cyan-300">
-                Web para Academia Deportiva
+                Web para Academia Magistrae
               </h4>
               <p class="text-gray-400 mt-2 text-sm sm:text-base">
-                Desarrollo de un sitio web corporativo con gestión de
-                inscripciones y panel de administración autogestionable en
-                Laravel.
+                Sitio corporativo con gestión de inscripciones y panel de
+                administración autogestionable en Laravel.
               </p>
               <a
                 href="https://magistrae.es"
                 target="_blank"
                 class="text-pink-400 hover:underline mt-3 block text-sm sm:text-base"
+                >🌐 Ver sitio en vivo</a
               >
-                🌐 Ver sitio en vivo
-              </a>
+              <span
+                class="inline-block bg-cyan-600 text-white px-2 py-1 text-xs rounded-full mt-2"
+                >Finalizado</span
+              >
             </div>
           </div>
-          <!-- Proyecto 2 -->
+
+          <!-- Proyecto 2: Generación de facturas -->
           <div
             class="bg-gray-800 rounded-2xl overflow-hidden neon-card transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1 relative"
           >
-            <div class="overflow-hidden h-48 rounded-t-2xl">
-              <img
-                src="https://placehold.co/600x200"
-                alt="Proyecto 2"
-                class="w-full h-full object-cover transform animate-scrollMini"
-              />
+            <div
+              class="overflow-hidden h-48 rounded-t-2xl flex items-center justify-center bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-500"
+            >
+              <span class="text-white font-bold text-xl sm:text-2xl"
+                >🚧 Facturas Laravel 🚧</span
+              >
             </div>
             <div class="p-4">
               <h4 class="text-xl sm:text-xl font-bold text-cyan-300">
-                Proyecto 2
+                Generación de facturas
               </h4>
               <p class="text-gray-400 mt-2 text-sm sm:text-base">
-                Generación de facturas con Laravel y SweetAlert.
+                Sistema para generar facturas mediante Laravel y SweetAlert.
               </p>
               <a
                 href="#"
                 class="text-pink-400 hover:underline mt-3 block text-sm sm:text-base"
                 >Ver más</a
               >
-            </div>
-            <div
-              class="absolute inset-0 bg-black/70 flex items-center justify-center"
-            >
-              <span class="text-white text-lg font-bold"
-                >🚧 Próximamente 🚧</span
+              <span
+                class="inline-block bg-yellow-500 text-black px-2 py-1 text-xs rounded-full mt-2"
+                >En desarrollo</span
               >
             </div>
           </div>
 
-          <!-- Proyecto 3 -->
+          <!-- Proyecto 3: Script en Python -->
           <div
             class="bg-gray-800 rounded-2xl overflow-hidden neon-card transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1 relative"
           >
-            <div class="overflow-hidden h-48 rounded-t-2xl">
-              <img
-                src="https://placehold.co/600x200"
-                alt="Proyecto 3"
-                class="w-full h-full object-cover transform animate-scrollMini"
-              />
+            <div
+              class="overflow-hidden h-48 rounded-t-2xl flex items-center justify-center bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600"
+            >
+              <span class="text-white font-bold text-xl sm:text-2xl"
+                >🚧 Script Python 🚧</span
+              >
             </div>
             <div class="p-4">
               <h4 class="text-xl sm:text-xl font-bold text-cyan-300">
-                Proyecto 3
+                Automatización en Python
               </h4>
               <p class="text-gray-400 mt-2 text-sm sm:text-base">
                 Script en Python para automatización de tareas.
@@ -396,12 +403,9 @@
                 class="text-pink-400 hover:underline mt-3 block text-sm sm:text-base"
                 >Ver más</a
               >
-            </div>
-            <div
-              class="absolute inset-0 bg-black/70 flex items-center justify-center"
-            >
-              <span class="text-white text-lg font-bold"
-                >🚧 Próximamente 🚧</span
+              <span
+                class="inline-block bg-yellow-500 text-black px-2 py-1 text-xs rounded-full mt-2"
+                >En desarrollo</span
               >
             </div>
           </div>
@@ -421,11 +425,25 @@
         Si te interesa trabajar conmigo o tienes alguna consulta, no dudes en
         escribirme.
       </p>
-      <a
-        href="mailto:jesus19997@gmail.com"
-        class="mt-4 sm:mt-6 inline-block px-6 py-3 bg-pink-500 text-white rounded-full font-bold neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all"
-        >📩 Envíame un correo</a
-      >
+      <div class="mt-4 sm:mt-6 flex flex-col sm:flex-row justify-center gap-4">
+        <a
+          href="mailto:jesus19997@gmail.com"
+          class="px-6 py-3 bg-pink-500 text-white rounded-full font-bold neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all"
+          >📩 Envíame un correo</a
+        >
+        <a
+          href="https://www.linkedin.com/in/jesus-garcia"
+          target="_blank"
+          class="px-6 py-3 bg-blue-600 text-white rounded-full font-bold neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all"
+          >💼 LinkedIn</a
+        >
+        <a
+          href="https://github.com/Jes1997"
+          target="_blank"
+          class="px-6 py-3 bg-gray-700 text-white rounded-full font-bold neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all"
+          >🐱 GitHub</a
+        >
+      </div>
     </section>
 
     <!-- Footer -->
@@ -436,11 +454,11 @@
     </footer>
 
     <script>
-      // Partículas
+      // Partículas optimizadas para móviles
       tsParticles.load("tsparticles", {
         background: { color: "transparent" },
         particles: {
-          number: { value: 70 },
+          number: { value: window.innerWidth < 640 ? 30 : 70 },
           move: { enable: true, speed: 2 },
           size: { value: 3 },
           color: { value: ["#ff6ec7", "#9b5de5", "#00bcd4"] },
@@ -466,6 +484,7 @@
         },
       });
 
+      // Menú móvil
       const menuBtn = document.getElementById("menu-btn");
       const mobileMenu = document.getElementById("mobile-menu");
       const closeBtn = document.getElementById("close-btn");
@@ -476,7 +495,6 @@
         setTimeout(() => mobileMenu.classList.add("open"), 10);
         document.body.style.overflow = "hidden";
       }
-
       function closeMenu() {
         mobileMenu.classList.remove("open");
         mobileMenu.classList.add("bouncing-close");
