@@ -88,24 +88,32 @@ function initModals() {
     });
   }
 
-  /* =======================
-     Fade-in secciones
-  ======================= */
-  function initScrollFadeIn() {
-    const sections = document.querySelectorAll("#sobre-mi, #skills");
+/* =======================
+   Fade-in secciones
+======================= */
+function initScrollAnimations() {
+  const fadeSections = document.querySelectorAll(".fade-section");
+  const projectCards = document.querySelectorAll(".project-card");
 
-    function fadeIn() {
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          section.style.opacity = 1;
+  function fadeIn() {
+    fadeSections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        section.classList.add("visible");
+
+        // Si es proyectos, aplicamos stagger a las cards
+        if (section.id === "proyectos") {
+          projectCards.forEach((card, i) => {
+            setTimeout(() => card.classList.add("visible"), i * 200);
+          });
         }
-      });
-    }
-
-    window.addEventListener("scroll", fadeIn);
-    fadeIn();
+      }
+    });
   }
+
+  window.addEventListener("scroll", fadeIn);
+  fadeIn(); // al cargar
+}
 
   /* =======================
      Inicialización
@@ -114,5 +122,5 @@ function initModals() {
   initScrollTop();
   initModals();
   initParticles();
-  initScrollFadeIn();
+  initScrollAnimations();
 });

@@ -125,15 +125,46 @@ body {
   box-shadow: 0 0 20px #ff6ec7, 0 0 30px #9b5de5, inset 0 0 15px #ff6ec7;
 }
 
-/* =========================
-   Secciones
-   ========================= */
-#sobre-mi,
-#skills {
-  opacity: 1; /* Antes estaba 0 */
-  transition: none;
+/* Animación base */
+.fade-section {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+/* Variaciones */
+.fade-up {
+  transform: translateY(30px);
+}
+.fade-left {
+  transform: translateX(-30px);
+}
+.fade-right {
+  transform: translateX(30px);
+}
+.fade-zoom {
+  transform: scale(0.95);
+}
+
+/* Cuando entra en pantalla */
+.fade-section.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger para proyectos */
+.project-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.project-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+a.linkedin-icon svg {
+  transform: translateX(1px); /* Ajusta según necesidad */
+}
 
 /* =========================
    Footer
