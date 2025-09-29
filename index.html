@@ -225,7 +225,7 @@
 
           <!-- Proyecto 2: Facturas (En desarrollo) -->
           <div
-            class="bg-gray-800 rounded-2xl overflow-hidden neon-card transition-transform duration-300 hover:scale-105 hover:shadow-2xl relative opacity-90"
+            class="bg-gray-800 rounded-2xl overflow-hidden neon-card transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
           >
             <div
               class="overflow-hidden h-48 rounded-t-2xl flex items-center justify-center bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-500"
@@ -263,7 +263,7 @@
 
           <!-- Proyecto 3: Python (En desarrollo) -->
           <div
-            class="bg-gray-800 rounded-2xl overflow-hidden neon-card transition-transform duration-300 hover:scale-105 hover:shadow-2xl relative opacity-90"
+            class="bg-gray-800 rounded-2xl overflow-hidden neon-card transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
           >
             <div
               class="overflow-hidden h-48 rounded-t-2xl flex items-center justify-center bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600"
@@ -302,18 +302,11 @@
       </div>
     </section>
 
-    <!-- Modales genéricos -->
-    <div
-      id="modal-magistrae"
-      class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 z-50"
-    >
-      <div class="bg-gray-900 rounded-2xl max-w-xl w-full p-6 relative">
-        <button
-          class="absolute top-4 right-4 text-white text-2xl font-bold modal-close"
-        >
-          &times;
-        </button>
-        <h4 class="text-cyan-300 font-bold text-xl mb-2">
+    <!-- Modal Magistrae -->
+    <div id="modal-magistrae" class="modal-neon opacity-0 pointer-events-none">
+      <div class="modal-content-neon neon-magistrae">
+        <button class="modal-close-neon">&times;</button>
+        <h4 class="text-cyan-300 font-bold text-xl mb-2 neon-text">
           Web para Academia Magistrae
         </h4>
         <p class="text-gray-300 mb-4">
@@ -332,17 +325,11 @@
       </div>
     </div>
 
-    <div
-      id="modal-facturas"
-      class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 z-50"
-    >
-      <div class="bg-gray-900 rounded-2xl max-w-xl w-full p-6 relative">
-        <button
-          class="absolute top-4 right-4 text-white text-2xl font-bold modal-close"
-        >
-          &times;
-        </button>
-        <h4 class="text-cyan-300 font-bold text-xl mb-2">
+    <!-- Modal Facturas -->
+    <div id="modal-facturas" class="modal-neon opacity-0 pointer-events-none">
+      <div class="modal-content-neon neon-facturas">
+        <button class="modal-close-neon">&times;</button>
+        <h4 class="text-cyan-300 font-bold text-xl mb-2 neon-text">
           Sistema de facturas
         </h4>
         <p class="text-gray-300 mb-4">
@@ -356,17 +343,11 @@
       </div>
     </div>
 
-    <div
-      id="modal-python"
-      class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 z-50"
-    >
-      <div class="bg-gray-900 rounded-2xl max-w-xl w-full p-6 relative">
-        <button
-          class="absolute top-4 right-4 text-white text-2xl font-bold modal-close"
-        >
-          &times;
-        </button>
-        <h4 class="text-cyan-300 font-bold text-xl mb-2">
+    <!-- Modal Python -->
+    <div id="modal-python" class="modal-neon opacity-0 pointer-events-none">
+      <div class="modal-content-neon neon-python">
+        <button class="modal-close-neon">&times;</button>
+        <h4 class="text-cyan-300 font-bold text-xl mb-2 neon-text">
           Script de automatización en Python
         </h4>
         <p class="text-gray-300 mb-4">

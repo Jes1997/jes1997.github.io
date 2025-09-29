@@ -43,32 +43,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* =======================
-     Modales
-  ======================= */
-  function initModals() {
-    const modalButtons = document.querySelectorAll("[data-modal-target]");
-    const closeButtons = document.querySelectorAll(".modal-close");
+/* =======================
+   Modales con slide + fade
+======================= */
+function initModals() {
+  const modals = document.querySelectorAll(".modal-neon");
+  const modalButtons = document.querySelectorAll("[data-modal-target]");
 
-    modalButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const target = btn.getAttribute("data-modal-target");
-        const modal = document.getElementById(target);
-        if (modal) {
-          modal.classList.add("opacity-100");
-          modal.classList.remove("pointer-events-none");
-        }
-      });
+  modalButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = document.getElementById(btn.dataset.modalTarget);
+      if (target) target.classList.add("show");
     });
+  });
 
-    closeButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const modal = btn.closest(".fixed");
-        modal.classList.remove("opacity-100");
-        modal.classList.add("pointer-events-none");
-      });
+  modals.forEach(modal => {
+    modal.querySelector(".modal-close-neon").addEventListener("click", () => {
+      modal.classList.remove("show");
     });
-  }
+    modal.addEventListener("click", e => {
+      if (e.target === modal) modal.classList.remove("show");
+    });
+  });
+}
 
   /* =======================
      tsParticles
