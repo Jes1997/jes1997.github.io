@@ -1,4 +1,47 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const skillIcons = document.querySelectorAll(".skills-icon");
+  skillIcons.forEach((icon, index) => {
+    setTimeout(() => {
+      icon.classList.add("loaded");
+    }, index * 150); // efecto escalonado
+  });
+
+  // Subtítulo animado tipo máquina de escribir
+  const phrases = ["Desarrollador Web", "Laravel", "PHP", "Frontend & Backend"];
+  let i = 0;
+  let j = 0;
+  let currentPhrase = '';
+  let isDeleting = false;
+  const speed = 100; // velocidad escritura
+
+  function type() {
+    const subtitle = document.getElementById("animated-subtitle");
+
+    if (i >= phrases.length) i = 0;
+
+    const fullPhrase = phrases[i];
+
+    if (!isDeleting) {
+      currentPhrase = fullPhrase.substring(0, j + 1);
+      j++;
+      subtitle.textContent = currentPhrase;
+      if (currentPhrase === fullPhrase) {
+        isDeleting = true;
+        setTimeout(type, 1000); // pausa al terminar
+        return;
+      }
+    } else {
+      currentPhrase = fullPhrase.substring(0, j - 1);
+      j--;
+      subtitle.textContent = currentPhrase;
+      if (currentPhrase === '') {
+        isDeleting = false;
+        i++;
+      }
+    }
+
+    setTimeout(type, isDeleting ? speed / 2 : speed);
+  }
   /* =======================
      Menú móvil
   ======================= */
@@ -70,23 +113,24 @@ function initModals() {
   /* =======================
      tsParticles
   ======================= */
-  function initParticles() {
-    tsParticles.load("tsparticles", {
-      fullScreen: { enable: false },
-      particles: {
-        number: { value: 80 },
-        color: { value: "#00ffff" },
-        shape: { type: "circle" },
-        opacity: { value: 0.5 },
-        size: { value: 3 },
-        move: { enable: true, speed: 1, direction: "none" },
-        links: { enable: true, distance: 120, color: "#00ffff", opacity: 0.3 },
-      },
-      interactivity: {
-        events: { onHover: { enable: true, mode: "repulse" } },
-      },
-    });
-  }
+function initParticles() {
+  tsParticles.load("tsparticles", {
+    fullScreen: { enable: false }, // importante, no ocupa toda la pantalla
+    particles: {
+      number: { value: 60 }, // menos partículas
+      color: { value: "#00ffff" },
+      shape: { type: "circle" },
+      opacity: { value: 0.5 },
+      size: { value: 2.5 },
+      move: { enable: true, speed: 1, direction: "none" },
+      links: { enable: true, distance: 100, color: "#00ffff", opacity: 0.2 },
+    },
+    interactivity: {
+      events: { onHover: { enable: true, mode: "repulse" } },
+    },
+  });
+}
+
 
 /* =======================
    Fade-in secciones
@@ -95,25 +139,44 @@ function initScrollAnimations() {
   const fadeSections = document.querySelectorAll(".fade-section");
   const projectCards = document.querySelectorAll(".project-card");
 
-  function fadeIn() {
-    fadeSections.forEach((section) => {
-      const rect = section.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) {
-        section.classList.add("visible");
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
 
-        // Si es proyectos, aplicamos stagger a las cards
-        if (section.id === "proyectos") {
-          projectCards.forEach((card, i) => {
-            setTimeout(() => card.classList.add("visible"), i * 200);
-          });
+          if (entry.target.id === "proyectos") {
+            projectCards.forEach((card, i) => {
+              setTimeout(() => card.classList.add("visible"), i * 200);
+            });
+          }
+
+          obs.unobserve(entry.target); // solo una vez
         }
-      }
-    });
-  }
+      });
+    },
+    { threshold: 0.2 }
+  );
 
-  window.addEventListener("scroll", fadeIn);
-  fadeIn(); // al cargar
+  fadeSections.forEach(section => observer.observe(section));
 }
+/* =======================
+    Tooltips habilidades
+======================= */
+function initSkillsTooltips() {
+  const skills = document.querySelectorAll(".skills-icon");
+
+  skills.forEach(skill => {
+    skill.addEventListener("mouseenter", () => {
+      skill.classList.add("hovered");
+    });
+    skill.addEventListener("mouseleave", () => {
+      skill.classList.remove("hovered");
+    });
+  });
+}
+
+
 
   /* =======================
      Inicialización
@@ -123,4 +186,6 @@ function initScrollAnimations() {
   initModals();
   initParticles();
   initScrollAnimations();
+  initSkillsTooltips();
+  type();
 });

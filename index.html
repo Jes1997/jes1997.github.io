@@ -117,13 +117,15 @@
           Jesús García
         </span>
       </h2>
-      <p class="text-base sm:text-lg max-w-2xl text-gray-200 font-semibold">
-        Desarrollador web junior con experiencia en Laravel, PHP, MySQL y
-        Python.
+
+      <!-- Subtítulo animado -->
+      <p class="text-lg sm:text-2xl text-gray-200 font-semibold mb-4">
+        <span id="animated-subtitle"></span>
       </p>
+
       <a
         href="#proyectos"
-        class="mt-4 sm:mt-6 px-6 py-3 bg-pink-500 text-white font-bold rounded-full neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all"
+        class="mt-4 sm:mt-6 px-6 py-3 bg-pink-500 text-white font-bold rounded-full neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all shadow-[0_0_10px_#ff0080,0_0_20px_#22d3ee]"
         >🚀 Ver mis proyectos</a
       >
     </section>
@@ -131,46 +133,219 @@
     <!-- Sobre mí -->
     <section
       id="sobre-mi"
-      class="fade-section fade-up text-center max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10"
+      class="fade-section fade-zoom max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 text-center relative z-10"
     >
       <h3 class="text-2xl sm:text-3xl font-bold mb-6 text-cyan-300 neon-sub">
         Sobre mí
       </h3>
-      <p class="text-base sm:text-lg leading-relaxed text-gray-300">
-        Desarrollador web junior con experiencia en backend con Laravel y MySQL,
-        integración de librerías como FullCalendar y DataTables, y aprendizaje
-        de Python para proyectos más versátiles.
-      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+        <!-- Placeholder de foto -->
+        <div class="flex-shrink-0">
+          <div
+            class="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 border-cyan-400 neon-card flex items-center justify-center text-cyan-300 text-4xl font-bold"
+          >
+            👤
+          </div>
+        </div>
+
+        <!-- Texto + botones -->
+        <div
+          class="max-w-xl text-left sm:text-left text-gray-300 flex flex-col gap-4"
+        >
+          <p class="text-base sm:text-lg">
+            Soy desarrollador web con experiencia en Laravel, JavaScript y
+            Python. Me apasiona crear interfaces limpias y funcionales, con un
+            toque moderno y dinámico.
+          </p>
+          <p class="text-base sm:text-lg">
+            Busco proyectos donde pueda aportar creatividad y eficiencia,
+            aprendiendo siempre nuevas tecnologías.
+          </p>
+
+          <!-- Botones de interacción -->
+          <div class="mt-4 flex flex-wrap gap-4">
+            <a
+              href="assets/docs/CV_Jesus_Garcia_Castillo_Agosto_2025_Sin_Foto.pdf"
+              target="_blank"
+              class="glow-button p-3 rounded-full flex items-center justify-center gap-2"
+            >
+              📄 Descargar CV
+            </a>
+            <a
+              href="https://github.com/Jes1997"
+              target="_blank"
+              class="glow-button p-3 rounded-full flex items-center justify-center gap-2"
+            >
+              🐙 GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/jes%C3%BAs-garc%C3%ADa-castillo-4359981b4/"
+              target="_blank"
+              class="glow-button p-3 rounded-full flex items-center justify-center gap-2"
+            >
+              🔗 LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Skills -->
+    <!-- =========================
+        Skills Mejoradas
+    ========================= -->
     <section
       id="skills"
-      class="fade-section fade-left max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 text-center relative z-10"
+      class="fade-section fade-up max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 text-center relative z-10"
     >
       <h3 class="text-2xl sm:text-3xl font-bold mb-6 text-cyan-300 neon-sub">
-        Mis habilidades
+        Habilidades
       </h3>
+      <p class="text-base sm:text-lg text-gray-300 mb-8">
+        Estas son algunas de las tecnologías y herramientas que manejo.
+      </p>
+
       <div
-        class="skills-grid grid grid-cols-3 sm:grid-cols-6 gap-6 sm:gap-8 mt-6"
+        class="grid grid-cols-3 sm:grid-cols-6 gap-6 justify-items-center items-center"
       >
-        <div class="flex items-center justify-center skills-icon">
-          <img src="assets/icons/laravel.svg" alt="Laravel" />
+        <!-- Laravel -->
+        <div class="skills-icon relative group">
+          <img src="assets/icons/laravel.svg" alt="Laravel" class="w-12 h-12" />
+          <div
+            class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <div
+              class="bg-gray-900/90 text-white px-3 py-1 rounded-lg shadow-lg text-sm flex flex-col items-center"
+            >
+              <span>Laravel</span>
+              <div
+                class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-1 overflow-hidden"
+              >
+                <div
+                  class="skill-fill bg-pink-500 h-full rounded-full"
+                  style="--skill-level: 85%"
+                ></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flex items-center justify-center skills-icon">
-          <img src="assets/icons/php.svg" alt="PHP" />
+
+        <!-- PHP -->
+        <div class="skills-icon relative group">
+          <img src="assets/icons/php.svg" alt="PHP" class="w-12 h-12" />
+          <div
+            class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <div
+              class="bg-gray-900/90 text-white px-3 py-1 rounded-lg shadow-lg text-sm flex flex-col items-center"
+            >
+              <span>PHP</span>
+              <div
+                class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-1 overflow-hidden"
+              >
+                <div
+                  class="skill-fill bg-blue-500 h-full rounded-full"
+                  style="--skill-level: 80%"
+                ></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flex items-center justify-center skills-icon">
-          <img src="assets/icons/python.svg" alt="Python" />
+
+        <!-- Python -->
+        <div class="skills-icon relative group">
+          <img src="assets/icons/python.svg" alt="Python" class="w-12 h-12" />
+          <div
+            class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <div
+              class="bg-gray-900/90 text-white px-3 py-1 rounded-lg shadow-lg text-sm flex flex-col items-center"
+            >
+              <span>Python</span>
+              <div
+                class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-1 overflow-hidden"
+              >
+                <div
+                  class="skill-fill bg-yellow-400 h-full rounded-full"
+                  style="--skill-level: 30%"
+                ></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flex items-center justify-center skills-icon">
-          <img src="assets/icons/mysql.svg" alt="MySQL" />
+
+        <!-- MySQL -->
+        <div class="skills-icon relative group">
+          <img src="assets/icons/mysql.svg" alt="MySQL" class="w-12 h-12" />
+          <div
+            class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <div
+              class="bg-gray-900/90 text-white px-3 py-1 rounded-lg shadow-lg text-sm flex flex-col items-center"
+            >
+              <span>MySQL</span>
+              <div
+                class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-1 overflow-hidden"
+              >
+                <div
+                  class="skill-fill bg-cyan-400 h-full rounded-full"
+                  style="--skill-level: 85%"
+                ></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flex items-center justify-center skills-icon">
-          <img src="assets/icons/tailwindcss.svg" alt="Tailwind CSS" />
+
+        <!-- Tailwind CSS -->
+        <div class="skills-icon relative group">
+          <img
+            src="assets/icons/tailwindcss.svg"
+            alt="Tailwind"
+            class="w-12 h-12"
+          />
+          <div
+            class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <div
+              class="bg-gray-900/90 text-white px-3 py-1 rounded-lg shadow-lg text-sm flex flex-col items-center"
+            >
+              <span>Tailwind CSS</span>
+              <div
+                class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-1 overflow-hidden"
+              >
+                <div
+                  class="skill-fill bg-teal-400 h-full rounded-full"
+                  style="--skill-level: 45%"
+                ></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flex items-center justify-center skills-icon">
-          <img src="assets/icons/javascript.svg" alt="JavaScript" />
+
+        <!-- JavaScript -->
+        <div class="skills-icon relative group">
+          <img
+            src="assets/icons/javascript.svg"
+            alt="JavaScript"
+            class="w-12 h-12"
+          />
+          <div
+            class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <div
+              class="bg-gray-900/90 text-white px-3 py-1 rounded-lg shadow-lg text-sm flex flex-col items-center"
+            >
+              <span>JavaScript</span>
+              <div
+                class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-1 overflow-hidden"
+              >
+                <div
+                  class="skill-fill bg-orange-400 h-full rounded-full"
+                  style="--skill-level: 70%"
+                ></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -230,17 +405,28 @@
 
           <!-- Proyecto 2: Facturas (En desarrollo) -->
           <div
-            class="project-card bg-gray-800 rounded-2xl overflow-hidden neon-card transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
+            class="project-card bg-gray-800 rounded-2xl overflow-hidden neon-card relative group transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
           >
             <div
-              class="overflow-hidden h-48 rounded-t-2xl flex items-center justify-center bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-500"
+              class="overflow-hidden h-48 rounded-t-2xl flex items-center justify-center bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-500 relative"
             >
-              <span class="text-white font-bold text-xl sm:text-2xl"
-                >🚧 Facturas Laravel 🚧</span
+              <!-- Icono Factura (SVG simple tipo documento) -->
+              <img
+                src="assets/icons/facturas.svg"
+                class="project-icon"
+                alt="Facturas"
+              />
+
+              <!-- Overlay "Próximamente" -->
+              <div
+                class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
               >
+                <span class="text-white font-bold text-lg">Próximamente</span>
+              </div>
             </div>
+
             <div class="p-4">
-              <h4 class="text-xl sm:text-xl font-bold text-cyan-300">
+              <h4 class="text-xl font-bold text-cyan-300">
                 Generación de facturas
               </h4>
               <p class="text-gray-400 mt-2 text-sm sm:text-base">
@@ -260,29 +446,39 @@
                 </button>
               </div>
               <span
-                class="inline-block bg-yellow-500 text-black px-2 py-1 text-xs rounded-full mt-2"
-                >En desarrollo</span
+                class="inline-block px-2 py-1 text-xs rounded-full border border-yellow-400 text-yellow-300 animate-pulse mt-2"
               >
+                🚧 En desarrollo
+              </span>
             </div>
           </div>
 
           <!-- Proyecto 3: Python (En desarrollo) -->
           <div
-            class="project-card bg-gray-800 rounded-2xl overflow-hidden neon-card transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
+            class="project-card bg-gray-800 rounded-2xl overflow-hidden neon-card relative group transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
           >
             <div
-              class="overflow-hidden h-48 rounded-t-2xl flex items-center justify-center bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600"
+              class="overflow-hidden h-48 rounded-t-2xl flex items-center justify-center bg-gradient-to-r from-green-500 via-emerald-600 to-teal-600 relative"
             >
-              <span class="text-white font-bold text-xl sm:text-2xl"
-                >🚧 Script Python 🚧</span
+              <!-- Icono Python (SVG minimalista) -->
+              <img
+                src="assets/icons/python-white.svg"
+                class="project-icon"
+                alt="Python Blanco"
+              />
+
+              <!-- Overlay "Próximamente" -->
+              <div
+                class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
               >
+                <span class="text-white font-bold text-lg">Próximamente</span>
+              </div>
             </div>
+
             <div class="p-4">
-              <h4 class="text-xl sm:text-xl font-bold text-cyan-300">
-                Automatización en Python
-              </h4>
+              <h4 class="text-xl font-bold text-cyan-300">Script en Python</h4>
               <p class="text-gray-400 mt-2 text-sm sm:text-base">
-                Script en Python para automatización de tareas.
+                Automatización de tareas con Python. En desarrollo.
               </p>
               <div class="mt-3 flex gap-2">
                 <a
@@ -298,9 +494,10 @@
                 </button>
               </div>
               <span
-                class="inline-block bg-yellow-500 text-black px-2 py-1 text-xs rounded-full mt-2"
-                >En desarrollo</span
+                class="inline-block px-2 py-1 text-xs rounded-full border border-yellow-400 text-yellow-300 animate-pulse mt-2"
               >
+                🚧 En desarrollo
+              </span>
             </div>
           </div>
         </div>
@@ -378,11 +575,14 @@
         Si te interesa trabajar conmigo o tienes alguna consulta, no dudes en
         escribirme.
       </p>
-      <div class="mt-4 sm:mt-6 flex flex-col sm:flex-row justify-center gap-4">
+
+      <div
+        class="mt-4 sm:mt-6 flex flex-wrap justify-center gap-4 items-center"
+      >
         <!-- Correo -->
         <a
           href="mailto:jesus19997@gmail.com"
-          class="p-4 bg-pink-500 text-white rounded-full neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all flex items-center justify-center"
+          class="contact-btn p-4 bg-pink-500 text-white rounded-full neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all flex items-center justify-center"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -401,7 +601,7 @@
         <a
           href="https://www.linkedin.com/in/jes%C3%BAs-garc%C3%ADa-castillo-4359981b4/"
           target="_blank"
-          class="p-4 bg-cyan-600 text-white rounded-full neon-card hover:bg-pink-500 hover:text-black hover:animate-pulse active:scale-95 transition-all flex items-center justify-center linkedin-icon"
+          class="contact-btn p-4 bg-cyan-600 text-white rounded-full neon-card hover:bg-pink-500 hover:text-black hover:animate-pulse active:scale-95 transition-all flex items-center justify-center"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -420,7 +620,7 @@
         <a
           href="https://github.com/Jes1997"
           target="_blank"
-          class="p-4 bg-gray-700 text-white rounded-full neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all flex items-center justify-center"
+          class="contact-btn p-4 bg-gray-700 text-white rounded-full neon-card hover:bg-cyan-400 hover:text-black hover:animate-pulse active:scale-95 transition-all flex items-center justify-center"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

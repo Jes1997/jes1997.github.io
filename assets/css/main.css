@@ -13,17 +13,22 @@ body {
   position: relative;
 }
 
-/* =========================
-   Fondo partículas
-   ========================= */
+/* Partículas solo detrás del hero */
 #tsparticles {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  z-index: -10;
+  height: 100vh; /* solo la altura del hero */
+  z-index: 0; /* detrás de todo */
+  pointer-events: none; /* que no interfiera con clicks */
+  opacity: 0.4; /* más sutil */
 }
+.hero {
+  position: relative;
+  z-index: 1; /* encima de las partículas */
+}
+
 
 /* =========================
    Menú móvil
@@ -125,6 +130,38 @@ body {
   box-shadow: 0 0 20px #ff6ec7, 0 0 30px #9b5de5, inset 0 0 15px #ff6ec7;
 }
 
+/* Botones con colores coherentes al portfolio */
+.glow-button {
+  background-color: #0ff; /* cyan */
+  color: #111;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #ff6ec7, 0 0 20px #00ffff;
+}
+
+.glow-button:hover {
+  color: #ffffff;
+  background-color: #ff6ec7; /* rosa neón */
+  box-shadow: 0 0 25px #ff6ec7, 0 0 35px #00ffff, 0 0 50px #ff6ec7 inset;
+  transform: scale(1.05);
+}
+
+/* Animación glow base */
+@keyframes neonGlow {
+  0% { box-shadow: 0 0 5px #ff6ec7, 0 0 10px #00ffff; }
+  50% { box-shadow: 0 0 15px #ff6ec7, 0 0 30px #00ffff; }
+  100% { box-shadow: 0 0 5px #ff6ec7, 0 0 10px #00ffff; }
+}
+
+/* Hover glow más intenso */
+@keyframes neonGlowHover {
+  0% { box-shadow: 0 0 15px #ff6ec7, 0 0 30px #00ffff, 0 0 40px #ff6ec7 inset; }
+  50% { box-shadow: 0 0 25px #ff6ec7, 0 0 45px #00ffff, 0 0 60px #ff6ec7 inset; }
+  100% { box-shadow: 0 0 15px #ff6ec7, 0 0 30px #00ffff, 0 0 40px #ff6ec7 inset; }
+}
+
+
 /* Animación base */
 .fade-section {
   opacity: 0;
@@ -220,12 +257,126 @@ footer {
   background: #9b5de5;
   transform: scale(1.1);
 }
+/* =========================
+   Skills Tooltip y Barra de Progreso Neon con gradiente animado
+========================= */
+.skills-icon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-/* Tamaño más grande y transición general */
+.skill-fill {
+  width: 0;
+  transition: width 1s ease-in-out;
+}
+
+.skills-icon.loaded .skill-fill {
+  width: var(--skill-level, 80%);
+}
+
+.group:hover .skill-fill {
+  width: var(--skill-level, 80%);
+}
+
 .skills-icon img {
   width: 4rem;
   height: 4rem;
-  transition: transform 0.3s, filter 0.3s;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.skills-icon:hover img {
+  transform: scale(1.6) rotate(-5deg);
+  filter: drop-shadow(0 0 35px currentColor) drop-shadow(0 0 50px currentColor);
+}
+
+/* Tooltip */
+.skills-icon .tooltip {
+  position: absolute;
+  bottom: -3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  /* Fondo para mejorar legibilidad */
+  background-color: rgba(0, 0, 0, 0.75); /* negro semi-transparente */
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(3px); /* opcional: efecto cristal */
+  z-index: 10;
+}
+
+.skills-icon:hover .tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Nombre de la skill */
+.skills-icon .tooltip span {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+  margin-bottom: 0.25rem;
+}
+
+
+/* Barra de progreso */
+.skills-icon .skill-bar {
+  width: 5rem;
+  height: 0.5rem;
+  background: #111;
+  border-radius: 9999px;
+  overflow: hidden;
+  box-shadow: 0 0 8px #00ffff inset;
+  margin-top: 0.25rem;
+}
+
+/* Barra con gradiente animado */
+.skills-icon .skill-fill {
+  height: 100%;
+  border-radius: 9999px;
+  width: 100%;
+  background: linear-gradient(270deg, #00ffff, #ff00ff, #ff6ec7, #00ffff);
+  background-size: 600% 600%;
+  animation: neonGradientFill 3s ease infinite, fillSkill 1s forwards;
+  box-shadow: 0 0 10px currentColor, 0 0 20px currentColor inset;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+/* Animación de llenado */
+@keyframes fillSkill {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Animación del gradiente */
+@keyframes neonGradientFill {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .skills-icon .tooltip {
+    bottom: -2.5rem;
+  }
+
+  .skills-icon .skill-bar {
+    width: 4rem;
+    height: 0.4rem;
+  }
+
+  .skills-icon .tooltip span {
+    font-size: 0.7rem;
+  }
 }
 
 /* Laravel - degradado rojo-rosa */
@@ -403,6 +554,21 @@ footer {
   border-radius: 1rem 1rem 0 0;
 }
 
+/* Solo afecta a los iconos SVG de proyectos en desarrollo */
+.project-card .project-icon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.project-card:hover .project-icon {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.9));
+}
+
+
 .project-card .card-content {
   padding: 1rem;
   color: #ccc;
@@ -450,4 +616,16 @@ footer {
 .status-desarrollo {
   background: #ff6ec7;
   color: white;
+}
+
+.shadow-neon {
+  box-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff, inset 0 0 12px #ff6ec7;
+}
+
+
+.contact-btn {
+  width: auto;       /* ancho ajustado al contenido */
+  min-width: 56px;   /* tamaño mínimo para que el SVG no se comprima */
+  max-width: 80px;   /* limita el tamaño en móviles */
+  height: 56px;      /* cuadrado uniforme */
 }
