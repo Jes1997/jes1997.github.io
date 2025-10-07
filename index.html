@@ -91,15 +91,22 @@
       </nav>
     </header>
 
-    <!-- Menú móvil overlay -->
-    <div id="mobile-menu" class="mobile-menu hidden md:hidden">
+    <!-- Menú móvil -->
+    <div id="mobile-menu" class="mobile-menu">
       <span id="close-btn">&times;</span>
-      <ul
-        class="flex flex-col items-center space-y-6 sm:space-y-8 px-6 sm:px-12"
-      >
-        <li><a href="#sobre-mi" class="text-2xl sm:text-3xl">Sobre mí</a></li>
-        <li><a href="#proyectos" class="text-2xl sm:text-3xl">Proyectos</a></li>
-        <li><a href="#contacto" class="text-2xl sm:text-3xl">Contacto</a></li>
+      <ul>
+        <li>
+          <a href="#sobre-mi">Sobre mí</a>
+        </li>
+        <li>
+          <a href="#skills">Habilidades</a>
+        </li>
+        <li>
+          <a href="#proyectos">Projectos</a>
+        </li>
+        <li>
+          <a href="#contacto">Contacto</a>
+        </li>
       </ul>
     </div>
 
@@ -206,7 +213,7 @@
       </p>
 
       <div
-        class="grid grid-cols-3 sm:grid-cols-6 gap-6 justify-items-center items-center"
+        class="grid grid-cols-2 sm:grid-cols-6 gap-6 justify-items-center items-center"
       >
         <!-- Laravel -->
         <div class="skills-icon relative group">
@@ -367,20 +374,22 @@
             class="project-card bg-gray-800 rounded-2xl overflow-hidden neon-card transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
           >
             <div class="overflow-hidden h-48 rounded-t-2xl">
-              <img
-                src="assets/screenshots/magistrae-placeholder.webp"
-                alt="Web corporativa de la Academia Magistrae"
-                loading="lazy"
-                class="w-full h-full object-cover"
-              />
+              <a href="https://magistrae.es" target="_blank">
+                <img
+                  src="assets/screenshots/magistrae-placeholder.webp"
+                  alt="Web corporativa de la Academia Magistrae"
+                  loading="lazy"
+                  class="w-full h-full object-cover"
+                />
+              </a>
             </div>
             <div class="p-4">
               <h4 class="text-xl sm:text-xl font-bold text-cyan-300">
                 Web para Academia Magistrae
               </h4>
               <p class="text-gray-400 mt-2 text-sm sm:text-base">
-                Sitio corporativo con gestión de inscripciones y panel de
-                administración autogestionable en Laravel.
+                Sitio corporativo con panel de administración autogestionable en
+                Laravel.
               </p>
               <div class="mt-3 flex gap-2">
                 <a
@@ -403,7 +412,53 @@
             </div>
           </div>
 
-          <!-- Proyecto 2: Facturas (En desarrollo) -->
+          <!-- Proyecto 2: Interactive Skills - Slot Machine -->
+          <div
+            class="project-card bg-gray-800 rounded-2xl overflow-hidden neon-card transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
+          >
+            <div class="overflow-hidden h-48 rounded-t-2xl">
+              <a
+                href="https://jes1997.github.io/interactive-skills/"
+                target="_blank"
+              >
+                <img
+                  src="assets/screenshots/demo.gif"
+                  alt="Interactive Skills - Slot Machine"
+                  loading="lazy"
+                  class="w-full h-full object-cover"
+                />
+              </a>
+            </div>
+            <div class="p-4">
+              <h4 class="text-xl sm:text-xl font-bold text-cyan-300">
+                Interactive Skills - Slot Machine
+              </h4>
+              <p class="text-gray-400 mt-2 text-sm sm:text-base">
+                Una máquina tragamonedas interactiva que muestra mis habilidades
+                de una manera divertida y atractiva.
+              </p>
+              <div class="mt-3 flex gap-2">
+                <a
+                  href="https://jes1997.github.io/interactive-skills/"
+                  target="_blank"
+                  class="text-pink-400 hover:underline text-sm sm:text-base"
+                  >🌐 Ver sitio</a
+                >
+                <button
+                  data-modal-target="modal-interactive-skills"
+                  class="text-cyan-300 hover:underline text-sm sm:text-base"
+                >
+                  📖 Ver detalles
+                </button>
+              </div>
+              <span
+                class="inline-block bg-cyan-600 text-white px-2 py-1 text-xs rounded-full mt-2"
+                >Finalizado</span
+              >
+            </div>
+          </div>
+
+          <!-- Proyecto 3: Facturas (En desarrollo) -->
           <div
             class="project-card bg-gray-800 rounded-2xl overflow-hidden neon-card relative group transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
           >
@@ -453,7 +508,7 @@
             </div>
           </div>
 
-          <!-- Proyecto 3: Python (En desarrollo) -->
+          <!-- Proyecto 4: Python (En desarrollo) -->
           <div
             class="project-card bg-gray-800 rounded-2xl overflow-hidden neon-card relative group transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
           >
@@ -512,14 +567,40 @@
           Web para Academia Magistrae
         </h4>
         <p class="text-gray-300 mb-4">
-          Sitio corporativo completo con panel autogestionable en Laravel,
-          sistema de inscripciones y gestión de cursos.
+          Sitio corporativo completo con panel autogestionable en Laravel y
+          gestión de cursos.
         </p>
         <p class="text-gray-400 mb-4">
           <strong>Tecnologías:</strong> Laravel, PHP, MySQL, Tailwind CSS, JS
         </p>
         <a
           href="https://magistrae.es"
+          target="_blank"
+          class="text-pink-400 hover:underline"
+          >🌐 Ver sitio en vivo</a
+        >
+      </div>
+    </div>
+
+    <!-- Modal Interactive Skills -->
+    <div
+      id="modal-interactive-skills"
+      class="modal-neon opacity-0 pointer-events-none"
+    >
+      <div class="modal-content-neon neon-magistrae">
+        <button class="modal-close-neon">&times;</button>
+        <h4 class="text-cyan-300 font-bold text-xl mb-2 neon-text">
+          Interactive Skills - Slot Machine
+        </h4>
+        <p class="text-gray-300 mb-4">
+          Una máquina tragamonedas interactiva que muestra mis habilidades de
+          una manera divertida y atractiva.
+        </p>
+        <p class="text-gray-400 mb-4">
+          <strong>Tecnologías:</strong> HTML, CSS, JavaScript
+        </p>
+        <a
+          href="https://jes1997.github.io/interactive-skills/"
           target="_blank"
           class="text-pink-400 hover:underline"
           >🌐 Ver sitio en vivo</a

@@ -45,31 +45,26 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =======================
      Menú móvil
   ======================= */
-  function initMobileMenu() {
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-    const closeBtn = document.getElementById("close-btn");
+function initMobileMenu() {
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const closeBtn = document.getElementById("close-btn");
 
-    function closeMenu() {
-      mobileMenu.classList.add("bouncing-close");
-      mobileMenu.addEventListener(
-        "animationend",
-        () => mobileMenu.classList.remove("open", "bouncing-close"),
-        { once: true }
-      );
-    }
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.add("open");
+  });
 
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.add("open");
-      mobileMenu.classList.remove("bouncing-close");
+  closeBtn.addEventListener("click", () => {
+    mobileMenu.classList.remove("open");
+  });
+
+  // Cerrar menú al hacer clic en cualquier enlace
+  mobileMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("open");
     });
-
-    closeBtn.addEventListener("click", closeMenu);
-
-    mobileMenu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", closeMenu);
-    });
-  }
+  });
+}
 
   /* =======================
      Scroll top button
@@ -167,14 +162,32 @@ function initSkillsTooltips() {
   const skills = document.querySelectorAll(".skills-icon");
 
   skills.forEach(skill => {
+    const tooltip = skill.querySelector(".tooltip");
+
     skill.addEventListener("mouseenter", () => {
-      skill.classList.add("hovered");
+      const rect = skill.getBoundingClientRect();
+      const tooltipWidth = tooltip.offsetWidth;
+      const tooltipHeight = tooltip.offsetHeight;
+
+      // Calculamos posición centrada
+      let left = rect.left + rect.width / 2 - tooltipWidth / 2;
+      let top = rect.bottom + 8; // 8px de separación
+
+      // Evitamos que se salga de la pantalla
+      left = Math.max(8, Math.min(left, window.innerWidth - tooltipWidth - 8));
+      top = Math.min(top, window.innerHeight - tooltipHeight - 8);
+
+      tooltip.style.left = left + "px";
+      tooltip.style.top = top + "px";
+      tooltip.style.opacity = 1;
     });
+
     skill.addEventListener("mouseleave", () => {
-      skill.classList.remove("hovered");
+      tooltip.style.opacity = 0;
     });
   });
 }
+
 
 
 

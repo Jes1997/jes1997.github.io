@@ -30,52 +30,45 @@ body {
 }
 
 
-/* =========================
-   Menú móvil
-   ========================= */
+/* Menú móvil overlay */
 .mobile-menu {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(30, 30, 30, 0.95);
+  inset: 0; /* top:0; left:0; right:0; bottom:0 */
+  background-color: rgba(20,20,20,0.95);
   display: flex;
   justify-content: center;
   align-items: center;
   transform: translateY(-100%) scale(0.95);
   opacity: 0;
-  transition: transform 0.5s cubic-bezier(0.25, 1.25, 0.5, 1),
-              opacity 0.3s ease;
-  z-index: 50;
+  pointer-events: none;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  z-index: 9999; /* aseguramos que esté encima de todo */
+  flex-direction: column;
 }
 
 .mobile-menu.open {
   transform: translateY(0) scale(1);
   opacity: 1;
+  pointer-events: auto;
 }
 
-@keyframes bounceClose {
-  0%   { transform: translateY(0) scale(1); opacity: 1; }
-  30%  { transform: translateY(-20px) scale(1.02); opacity: 1; }
-  60%  { transform: translateY(10px) scale(0.98); opacity: 1; }
-  100% { transform: translateY(-100%) scale(0.95); opacity: 0; }
+/* Links */
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 
-.mobile-menu.bouncing-close {
-  animation: bounceClose 0.5s forwards;
-}
-
-.mobile-menu ul li a {
-  font-size: 1.5rem;
-  color: white;
-  transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
-  transform: translateY(20px);
-  opacity: 0;
+.mobile-menu ul li {
+  margin: 1rem 0;
 }
 
 .mobile-menu.open ul li a {
+  font-size: 1.8rem;
   animation: slideFadeIn 0.4s forwards;
+  color: #fff;
+  text-shadow: 0 0 5px #ff6ec7, 0 0 10px #00ffff;
 }
 
 .mobile-menu.open ul li:nth-child(1) a { animation-delay: 0.1s; }
@@ -83,29 +76,40 @@ body {
 .mobile-menu.open ul li:nth-child(3) a { animation-delay: 0.3s; }
 
 @keyframes slideFadeIn {
-  0%   { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0%   { opacity: 0; transform: translateY(20px); filter: blur(2px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 .mobile-menu ul li a:hover {
   color: #ff6ec7;
   text-shadow: 0 0 8px #ff6ec7, 0 0 12px #9b5de5;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
-/* Botón cerrar menú */
-.mobile-menu #close-btn {
+/* Botón cerrar */
+#close-btn {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 2rem;
-  color: white;
+  top: 2rem;
+  right: 2rem;
+  font-size: 3rem;
+  color: #00ffff;
   cursor: pointer;
-  transition: color 0.2s ease;
+  user-select: none;
 }
 
-.mobile-menu #close-btn:hover {
+#close-btn:hover {
   color: #ff6ec7;
+}
+
+@keyframes bounceClose {
+  0%   { transform: translateY(0) scale(1); opacity: 1; }
+  30%  { transform: translateY(-15px) scale(1.05); opacity: 1; }
+  60%  { transform: translateY(10px) scale(0.98); opacity: 0.8; }
+  100% { transform: translateY(-100%) scale(0.95); opacity: 0; }
+}
+
+.mobile-menu.bouncing-close {
+  animation: bounceClose 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
 }
 
 /* =========================
@@ -227,6 +231,13 @@ footer {
 /* =========================
    Skills
    ========================= */
+   .skills-icon {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .skills-icon:hover {
   transform: scale(1.15);
   filter: drop-shadow(0 0 10px #00ffff);
@@ -258,7 +269,7 @@ footer {
   transform: scale(1.1);
 }
 /* =========================
-   Skills Tooltip y Barra de Progreso Neon con gradiente animado
+    Interactive Skills
 ========================= */
 .skills-icon {
     position: relative;
@@ -290,40 +301,6 @@ footer {
   transform: scale(1.6) rotate(-5deg);
   filter: drop-shadow(0 0 35px currentColor) drop-shadow(0 0 50px currentColor);
 }
-
-/* Tooltip */
-.skills-icon .tooltip {
-  position: absolute;
-  bottom: -3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-
-  /* Fondo para mejorar legibilidad */
-  background-color: rgba(0, 0, 0, 0.75); /* negro semi-transparente */
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.5rem;
-  backdrop-filter: blur(3px); /* opcional: efecto cristal */
-  z-index: 10;
-}
-
-.skills-icon:hover .tooltip {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Nombre de la skill */
-.skills-icon .tooltip span {
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: #00ffff;
-  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
-  margin-bottom: 0.25rem;
-}
-
 
 /* Barra de progreso */
 .skills-icon .skill-bar {
@@ -361,22 +338,6 @@ footer {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
-}
-
-/* Responsive */
-@media (max-width: 640px) {
-  .skills-icon .tooltip {
-    bottom: -2.5rem;
-  }
-
-  .skills-icon .skill-bar {
-    width: 4rem;
-    height: 0.4rem;
-  }
-
-  .skills-icon .tooltip span {
-    font-size: 0.7rem;
-  }
 }
 
 /* Laravel - degradado rojo-rosa */
