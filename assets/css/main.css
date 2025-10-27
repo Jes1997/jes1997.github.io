@@ -165,6 +165,19 @@ body {
   100% { box-shadow: 0 0 15px #ff6ec7, 0 0 30px #00ffff, 0 0 40px #ff6ec7 inset; }
 }
 
+/* === Margen lateral general en móvil === */
+section {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* En pantallas medianas o mayores, se mantiene el diseño centrado sin añadir márgenes extras */
+@media (min-width: 640px) {
+  section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 
 /* Animación base */
 .fade-section {
@@ -229,22 +242,6 @@ footer {
 }
 
 /* =========================
-   Skills
-   ========================= */
-   .skills-icon {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.skills-icon:hover {
-  transform: scale(1.15);
-  filter: drop-shadow(0 0 10px #00ffff);
-  transition: 0.3s;
-}
-
-/* =========================
    Scroll Up Button
    ========================= */
 #scrollTopBtn {
@@ -268,56 +265,79 @@ footer {
   background: #9b5de5;
   transform: scale(1.1);
 }
-/* =========================
-    Interactive Skills
-========================= */
+
+/* === SECCIÓN HABILIDADES === */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
 .skills-icon {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-.skill-fill {
-  width: 0;
-  transition: width 1s ease-in-out;
-}
-
-.skills-icon.loaded .skill-fill {
-  width: var(--skill-level, 80%);
-}
-
-.group:hover .skill-fill {
-  width: var(--skill-level, 80%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: default;
+  z-index: 1;
 }
 
 .skills-icon img {
-  width: 4rem;
-  height: 4rem;
+  width: 64px;
+  height: 64px;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.skills-icon:hover img {
-  transform: scale(1.6) rotate(-5deg);
-  filter: drop-shadow(0 0 35px currentColor) drop-shadow(0 0 50px currentColor);
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(17, 17, 17, 0.95);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 9999;
+}
+
+.skills-icon:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* Evita que el tooltip se salga en móvil */
+@media (max-width: 600px) {
+  .tooltip {
+    font-size: 0.75rem;
+    max-width: 150px;
+    white-space: normal;
+  }
 }
 
 /* Barra de progreso */
-.skills-icon .skill-bar {
+.skill-bar {
   width: 5rem;
   height: 0.5rem;
   background: #111;
   border-radius: 9999px;
   overflow: hidden;
-  box-shadow: 0 0 8px #00ffff inset;
   margin-top: 0.25rem;
 }
 
-/* Barra con gradiente animado */
-.skills-icon .skill-fill {
+.skill-fill {
   height: 100%;
   border-radius: 9999px;
-  width: 100%;
+  width: var(--skill-level, 100%);
   background: linear-gradient(270deg, #00ffff, #ff00ff, #ff6ec7, #00ffff);
   background-size: 600% 600%;
   animation: neonGradientFill 3s ease infinite, fillSkill 1s forwards;
@@ -326,91 +346,114 @@ footer {
   transform: scaleX(0);
 }
 
-/* Animación de llenado */
 @keyframes fillSkill {
   to {
     transform: scaleX(1);
   }
 }
 
-/* Animación del gradiente */
 @keyframes neonGradientFill {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-/* Laravel - degradado rojo-rosa */
+/* Animaciones de brillo por lenguaje */
 .skills-icon:nth-child(1) img {
-  filter: drop-shadow(0 0 5px #ff3e3e) drop-shadow(0 0 10px #ff3e3e);
-  animation: neonGradientRed 3s infinite alternate;
-}
-@keyframes neonGradientRed {
-  0% { filter: drop-shadow(0 0 5px #ff3e3e) drop-shadow(0 0 10px #ff3e3e); }
-  50% { filter: drop-shadow(0 0 15px #ff6ec7) drop-shadow(0 0 30px #ff6ec7); }
-  100% { filter: drop-shadow(0 0 5px #ff3e3e) drop-shadow(0 0 10px #ff3e3e); }
+  filter: drop-shadow(0 0 5px #ff3e3e);
+  animation: neonLaravel 3s infinite alternate;
 }
 
-/* PHP - degradado azul */
 .skills-icon:nth-child(2) img {
-  filter: drop-shadow(0 0 5px #7289da) drop-shadow(0 0 10px #7289da);
-  animation: neonGradientBlue 3.2s infinite alternate;
-}
-@keyframes neonGradientBlue {
-  0% { filter: drop-shadow(0 0 5px #7289da) drop-shadow(0 0 10px #7289da); }
-  50% { filter: drop-shadow(0 0 15px #00bfff) drop-shadow(0 0 30px #00bfff); }
-  100% { filter: drop-shadow(0 0 5px #7289da) drop-shadow(0 0 10px #7289da); }
+  filter: drop-shadow(0 0 5px #7289da);
+  animation: neonPHP 3.2s infinite alternate;
 }
 
-/* Python - degradado amarillo-naranja */
 .skills-icon:nth-child(3) img {
-  filter: drop-shadow(0 0 5px #f7df1e) drop-shadow(0 0 10px #f7df1e);
-  animation: neonGradientYellow 2.8s infinite alternate;
-}
-@keyframes neonGradientYellow {
-  0% { filter: drop-shadow(0 0 5px #f7df1e) drop-shadow(0 0 10px #f7df1e); }
-  50% { filter: drop-shadow(0 0 15px #ffcc00) drop-shadow(0 0 30px #ffcc00); }
-  100% { filter: drop-shadow(0 0 5px #f7df1e) drop-shadow(0 0 10px #f7df1e); }
+  filter: drop-shadow(0 0 5px #f7df1e);
+  animation: neonPython 2.8s infinite alternate;
 }
 
-/* MySQL - degradado cian-azul */
 .skills-icon:nth-child(4) img {
-  filter: drop-shadow(0 0 5px #00bcd4) drop-shadow(0 0 10px #00bcd4);
-  animation: neonGradientCyan 3.1s infinite alternate;
-}
-@keyframes neonGradientCyan {
-  0% { filter: drop-shadow(0 0 5px #00bcd4) drop-shadow(0 0 10px #00bcd4); }
-  50% { filter: drop-shadow(0 0 15px #22d3ee) drop-shadow(0 0 30px #22d3ee); }
-  100% { filter: drop-shadow(0 0 5px #00bcd4) drop-shadow(0 0 10px #00bcd4); }
+  filter: drop-shadow(0 0 5px #00bcd4);
+  animation: neonMySQL 3.1s infinite alternate;
 }
 
-/* Tailwind - degradado celeste-azul */
 .skills-icon:nth-child(5) img {
-  filter: drop-shadow(0 0 5px #38bdf8) drop-shadow(0 0 10px #38bdf8);
-  animation: neonGradientTailwind 3.3s infinite alternate;
-}
-@keyframes neonGradientTailwind {
-  0% { filter: drop-shadow(0 0 5px #38bdf8) drop-shadow(0 0 10px #38bdf8); }
-  50% { filter: drop-shadow(0 0 15px #0ea5e9) drop-shadow(0 0 30px #0ea5e9); }
-  100% { filter: drop-shadow(0 0 5px #38bdf8) drop-shadow(0 0 10px #38bdf8); }
+  filter: drop-shadow(0 0 5px #38bdf8);
+  animation: neonTailwind 3.3s infinite alternate;
 }
 
-/* JavaScript - degradado naranja */
 .skills-icon:nth-child(6) img {
-  filter: drop-shadow(0 0 5px #f7a008) drop-shadow(0 0 10px #f7a008);
-  animation: neonGradientOrange 3.4s infinite alternate;
-}
-@keyframes neonGradientOrange {
-  0% { filter: drop-shadow(0 0 5px #f7a008) drop-shadow(0 0 10px #f7a008); }
-  50% { filter: drop-shadow(0 0 15px #ff9f1c) drop-shadow(0 0 30px #ff9f1c); }
-  100% { filter: drop-shadow(0 0 5px #f7a008) drop-shadow(0 0 10px #f7a008); }
+  filter: drop-shadow(0 0 5px #f7a008);
+  animation: neonJS 3.4s infinite alternate;
 }
 
-/* Hover general para todos */
-.skills-icon:hover img {
-  transform: scale(1.6) rotate(-5deg);
-  filter: drop-shadow(0 0 35px currentColor) drop-shadow(0 0 50px currentColor);
+/* === Keyframes personalizados === */
+@keyframes neonLaravel {
+  0% { filter: drop-shadow(0 0 5px #ff3e3e); }
+  50% { filter: drop-shadow(0 0 20px #ff6ec7); }
+  100% { filter: drop-shadow(0 0 5px #ff3e3e); }
 }
+
+@keyframes neonPHP {
+  0% { filter: drop-shadow(0 0 5px #7289da); }
+  50% { filter: drop-shadow(0 0 20px #00bfff); }
+  100% { filter: drop-shadow(0 0 5px #7289da); }
+}
+
+@keyframes neonPython {
+  0% { filter: drop-shadow(0 0 5px #f7df1e); }
+  50% { filter: drop-shadow(0 0 20px #ffcc00); }
+  100% { filter: drop-shadow(0 0 5px #f7df1e); }
+}
+
+@keyframes neonMySQL {
+  0% { filter: drop-shadow(0 0 5px #00bcd4); }
+  50% { filter: drop-shadow(0 0 20px #22d3ee); }
+  100% { filter: drop-shadow(0 0 5px #00bcd4); }
+}
+
+@keyframes neonTailwind {
+  0% { filter: drop-shadow(0 0 5px #38bdf8); }
+  50% { filter: drop-shadow(0 0 20px #0ea5e9); }
+  100% { filter: drop-shadow(0 0 5px #38bdf8); }
+}
+
+@keyframes neonJS {
+  0% { filter: drop-shadow(0 0 5px #f7a008); }
+  50% { filter: drop-shadow(0 0 20px #ff9f1c); }
+  100% { filter: drop-shadow(0 0 5px #f7a008); }
+}
+
+/* Hover general */
+.skills-icon:hover img {
+  transform: scale(1.2);
+  filter: brightness(1.4) drop-shadow(0 0 25px currentColor);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .skills-grid {
+    gap: 1.5rem;
+  }
+
+  .skills-icon img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .tooltip {
+    font-size: 0.75rem;
+  }
+}
+
 
 /* Modales animados */
 

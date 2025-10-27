@@ -213,145 +213,109 @@
       </p>
 
       <div
-        class="grid grid-cols-2 sm:grid-cols-6 gap-6 justify-items-center items-center"
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 justify-items-center items-center"
       >
         <!-- Laravel -->
-        <div class="skills-icon relative group">
-          <img src="assets/icons/laravel.svg" alt="Laravel" class="w-12 h-12" />
+        <div class="skills-icon flex flex-col items-center text-center">
+          <img
+            src="assets/icons/laravel.svg"
+            alt="Laravel"
+            class="w-12 h-12 mb-2"
+          />
+          <span class="text-cyan-300 font-semibold">Laravel</span>
           <div
-            class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-2 overflow-hidden"
           >
             <div
-              class="bg-gray-900/90 text-white px-3 py-1 rounded-lg shadow-lg text-sm flex flex-col items-center"
-            >
-              <span>Laravel</span>
-              <div
-                class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-1 overflow-hidden"
-              >
-                <div
-                  class="skill-fill bg-pink-500 h-full rounded-full"
-                  style="--skill-level: 85%"
-                ></div>
-              </div>
-            </div>
+              class="skill-fill bg-pink-500 h-full rounded-full"
+              style="width: 85%"
+            ></div>
           </div>
         </div>
 
         <!-- PHP -->
-        <div class="skills-icon relative group">
-          <img src="assets/icons/php.svg" alt="PHP" class="w-12 h-12" />
+        <div class="skills-icon flex flex-col items-center text-center">
+          <img src="assets/icons/php.svg" alt="PHP" class="w-12 h-12 mb-2" />
+          <span class="text-cyan-300 font-semibold">PHP</span>
           <div
-            class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-2 overflow-hidden"
           >
             <div
-              class="bg-gray-900/90 text-white px-3 py-1 rounded-lg shadow-lg text-sm flex flex-col items-center"
-            >
-              <span>PHP</span>
-              <div
-                class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-1 overflow-hidden"
-              >
-                <div
-                  class="skill-fill bg-blue-500 h-full rounded-full"
-                  style="--skill-level: 80%"
-                ></div>
-              </div>
-            </div>
+              class="skill-fill bg-blue-500 h-full rounded-full"
+              style="width: 80%"
+            ></div>
           </div>
         </div>
 
         <!-- Python -->
-        <div class="skills-icon relative group">
-          <img src="assets/icons/python.svg" alt="Python" class="w-12 h-12" />
+        <div class="skills-icon flex flex-col items-center text-center">
+          <img
+            src="assets/icons/python.svg"
+            alt="Python"
+            class="w-12 h-12 mb-2"
+          />
+          <span class="text-cyan-300 font-semibold">Python</span>
           <div
-            class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-2 overflow-hidden"
           >
             <div
-              class="bg-gray-900/90 text-white px-3 py-1 rounded-lg shadow-lg text-sm flex flex-col items-center"
-            >
-              <span>Python</span>
-              <div
-                class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-1 overflow-hidden"
-              >
-                <div
-                  class="skill-fill bg-yellow-400 h-full rounded-full"
-                  style="--skill-level: 30%"
-                ></div>
-              </div>
-            </div>
+              class="skill-fill bg-yellow-400 h-full rounded-full"
+              style="width: 30%"
+            ></div>
           </div>
         </div>
 
         <!-- MySQL -->
-        <div class="skills-icon relative group">
-          <img src="assets/icons/mysql.svg" alt="MySQL" class="w-12 h-12" />
+        <div class="skills-icon flex flex-col items-center text-center">
+          <img
+            src="assets/icons/mysql.svg"
+            alt="MySQL"
+            class="w-12 h-12 mb-2"
+          />
+          <span class="text-cyan-300 font-semibold">MySQL</span>
           <div
-            class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-2 overflow-hidden"
           >
             <div
-              class="bg-gray-900/90 text-white px-3 py-1 rounded-lg shadow-lg text-sm flex flex-col items-center"
-            >
-              <span>MySQL</span>
-              <div
-                class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-1 overflow-hidden"
-              >
-                <div
-                  class="skill-fill bg-cyan-400 h-full rounded-full"
-                  style="--skill-level: 85%"
-                ></div>
-              </div>
-            </div>
+              class="skill-fill bg-cyan-400 h-full rounded-full"
+              style="width: 85%"
+            ></div>
           </div>
         </div>
 
         <!-- Tailwind CSS -->
-        <div class="skills-icon relative group">
+        <div class="skills-icon flex flex-col items-center text-center">
           <img
             src="assets/icons/tailwindcss.svg"
             alt="Tailwind"
-            class="w-12 h-12"
+            class="w-12 h-12 mb-2"
           />
+          <span class="text-cyan-300 font-semibold">Tailwind CSS</span>
           <div
-            class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-2 overflow-hidden"
           >
             <div
-              class="bg-gray-900/90 text-white px-3 py-1 rounded-lg shadow-lg text-sm flex flex-col items-center"
-            >
-              <span>Tailwind CSS</span>
-              <div
-                class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-1 overflow-hidden"
-              >
-                <div
-                  class="skill-fill bg-teal-400 h-full rounded-full"
-                  style="--skill-level: 45%"
-                ></div>
-              </div>
-            </div>
+              class="skill-fill bg-teal-400 h-full rounded-full"
+              style="width: 45%"
+            ></div>
           </div>
         </div>
 
         <!-- JavaScript -->
-        <div class="skills-icon relative group">
+        <div class="skills-icon flex flex-col items-center text-center">
           <img
             src="assets/icons/javascript.svg"
             alt="JavaScript"
-            class="w-12 h-12"
+            class="w-12 h-12 mb-2"
           />
+          <span class="text-cyan-300 font-semibold">JavaScript</span>
           <div
-            class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-2 overflow-hidden"
           >
             <div
-              class="bg-gray-900/90 text-white px-3 py-1 rounded-lg shadow-lg text-sm flex flex-col items-center"
-            >
-              <span>JavaScript</span>
-              <div
-                class="skill-bar bg-gray-800 rounded-full h-2 w-20 mt-1 overflow-hidden"
-              >
-                <div
-                  class="skill-fill bg-orange-400 h-full rounded-full"
-                  style="--skill-level: 70%"
-                ></div>
-              </div>
-            </div>
+              class="skill-fill bg-orange-400 h-full rounded-full"
+              style="width: 70%"
+            ></div>
           </div>
         </div>
       </div>
