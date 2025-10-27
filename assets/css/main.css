@@ -626,7 +626,6 @@ footer {
   box-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff, inset 0 0 12px #ff6ec7;
 }
 
-
 .contact-btn {
   width: auto;       /* ancho ajustado al contenido */
   min-width: 56px;   /* tamaño mínimo para que el SVG no se comprima */
