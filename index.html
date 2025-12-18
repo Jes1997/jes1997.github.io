@@ -421,7 +421,59 @@
             </div>
           </div>
 
-          <!-- Proyecto 3: Facturas (En desarrollo) -->
+          <!-- Proyecto 3: Control de Camiones (Python) -->
+          <div
+            class="project-card bg-gray-800 rounded-2xl overflow-hidden neon-card relative group transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
+          >
+            <div
+              class="overflow-hidden h-48 rounded-t-2xl flex items-center justify-center bg-gradient-to-r from-yellow-500 via-orange-600 to-red-500 relative"
+            >
+              <!-- Icono Python -->
+              <img
+                src="assets/icons/python-white.svg"
+                class="project-icon"
+                alt="Python"
+              />
+
+              <!-- Overlay "En GitHub" -->
+              <div
+                class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
+              >
+                <span class="text-white font-bold text-lg">Ver en GitHub</span>
+              </div>
+            </div>
+
+            <div class="p-4">
+              <h4 class="text-xl font-bold text-cyan-300">
+                Control de Camiones (Python)
+              </h4>
+              <p class="text-gray-400 mt-2 text-sm sm:text-base">
+                Mini-proyecto en Python para registrar la entrada y salida de
+                camiones, listar registros y editar registros cerrados con
+                confirmación. Utiliza SQLite para persistencia.
+              </p>
+              <div class="mt-3 flex gap-2">
+                <a
+                  href="https://github.com/Jes1997/control-camiones-python"
+                  target="_blank"
+                  class="text-pink-400 hover:underline text-sm sm:text-base"
+                  >🌐 Ver en GitHub</a
+                >
+                <button
+                  data-modal-target="modal-python-camiones"
+                  class="text-cyan-300 hover:underline text-sm sm:text-base"
+                >
+                  📖 Ver detalles
+                </button>
+              </div>
+              <span
+                class="inline-block bg-cyan-600 text-white px-2 py-1 text-xs rounded-full mt-2"
+                >Finalizado</span
+              >
+            </div>
+          </div>
+
+          <!-- Proyecto 4: Facturas (En desarrollo) -->
           <div
             class="project-card bg-gray-800 rounded-2xl overflow-hidden neon-card relative group transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
           >
@@ -471,7 +523,7 @@
             </div>
           </div>
 
-          <!-- Proyecto 4: Python (En desarrollo) -->
+          <!-- Proyecto 5: Python (En desarrollo) -->
           <div
             class="project-card bg-gray-800 rounded-2xl overflow-hidden neon-card relative group transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-1 hover:-rotate-y-1"
           >
@@ -570,6 +622,27 @@
         >
       </div>
     </div>
+
+    <!-- Modal Control de Camiones -->
+  <div id="modal-python-camiones" class="modal-neon opacity-0 pointer-events-none">
+    <div class="modal-content-neon neon-python">
+      <button class="modal-close-neon">&times;</button>
+      <h4 class="text-cyan-300 font-bold text-xl mb-2 neon-text">Control de Camiones (Python)</h4>
+      <p class="text-gray-300 mb-4">
+        Mini-proyecto funcional en Python que permite:
+        <ul class="list-disc ml-6 mt-2">
+          <li>Registrar entrada y salida de camiones</li>
+          <li>Listar todos los registros con orden cronológico</li>
+          <li>Editar registros cerrados con advertencia y confirmación</li>
+          <li>Persistencia de datos usando SQLite</li>
+        </ul>
+      </p>
+      <p class="text-gray-400 mb-4">
+        <strong>Tecnologías:</strong> Python 3, SQLite
+      </p>
+      <a href="https://github.com/Jes1997/control-camiones-python" target="_blank" class="text-pink-400 hover:underline">🌐 Ver en GitHub</a>
+    </div>
+  </div>
 
     <!-- Modal Facturas -->
     <div id="modal-facturas" class="modal-neon opacity-0 pointer-events-none">
